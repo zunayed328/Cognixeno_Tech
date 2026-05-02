@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #05070f;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(65, 194, 255, 0.05), transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(141, 92, 255, 0.08), transparent 18%),
+    linear-gradient(180deg, #05070f 0%, #060812 48%, #05070f 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(65, 194, 255, 0.28);
+  color: white;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.section-title {
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.card-frost {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  backdrop-filter: blur(22px);
+}
