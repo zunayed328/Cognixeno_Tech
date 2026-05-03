@@ -1,13 +1,15 @@
-import Navbar from '../components/Navbar'
-import Hero from '../components/Hero'
-import Services from '../components/Services'
-import AIAgents from '../components/AIAgents'
-import WhyUs from '../components/WhyUs'
-import ChatbotPreview from '../components/ChatbotPreview'
-import Stats from '../components/Stats'
-import Testimonials from '../components/Testimonials'
-import ContactCTA from '../components/ContactCTA'
-import Footer from '../components/Footer'
+import dynamic from 'next/dynamic'
+
+const Navbar = dynamic(() => import('../components/Navbar'))
+const Hero = dynamic(() => import('../components/Hero'))
+const Services = dynamic(() => import('../components/Services'))
+const AIAgents = dynamic(() => import('../components/AIAgents'))
+const WhyUs = dynamic(() => import('../components/WhyUs'))
+const ChatbotPreview = dynamic(() => import('../components/ChatbotPreview'))
+const Stats = dynamic(() => import('../components/Stats'))
+const Testimonials = dynamic(() => import('../components/Testimonials'))
+const ContactCTA = dynamic(() => import('../components/ContactCTA'))
+const Footer = dynamic(() => import('../components/Footer'))
 
 export default function Home() {
   return (

@@ -1,62 +1,123 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FiArrowRight, FiShield, FiServer } from 'react-icons/fi'
+import { FiChevronDown } from 'react-icons/fi'
+
+const particles = Array.from({ length: 20 }, (_, index) => ({
+  id: index,
+  top: `${8 + (index % 5) * 14}%`,
+  left: `${6 + (index % 4) * 22}%`,
+  delay: (index % 5) * 0.8,
+  duration: 10 + (index % 5) * 1.5
+}))
 
 export default function Hero() {
   return (
-    <section className="relative pt-12 pb-24 lg:pt-20">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.75, ease: 'easeOut' }}
-        className="mx-auto max-w-4xl"
-      >
-        <span className="section-title text-sm tracking-[0.3em] text-cyan-300/70">AI Defense for the modern enterprise</span>
-        <h1 className="mt-6 text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
-          Transforming digital resilience with autonomous threat intelligence.
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-          Cognixeno Tech unifies predictive security, incident orchestration, and AI agents into one ambient platform designed for high-stakes infrastructure.
-        </p>
+    <section className="relative min-h-screen overflow-hidden bg-hero-base text-white">
+      <div className="absolute inset-0 bg-hero-grid opacity-40" />
+      <div className="absolute inset-0 bg-hero-glow" />
+      <div className="absolute inset-0 pointer-events-none">
+        {particles.map((particle) => (
+          <span
+            key={particle.id}
+            className="hero-particle"
+            style={{
+              top: particle.top,
+              left: particle.left,
+              animationDelay: `${particle.delay}s`,
+              animationDuration: `${particle.duration}s`
+            }}
+          />
+        ))}
+      </div>
 
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center rounded-full bg-cyan-500 px-7 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400"
+      <div className="relative z-10 mx-auto flex min-h-screen flex-col items-center justify-center px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: -18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="mb-8 inline-flex items-center rounded-full border border-[rgba(200,168,233,0.3)] bg-[rgba(200,168,233,0.1)] px-4 py-2 text-[13px] tracking-[2px] text-[#C8A8E9]"
+        >
+          ⚡ ALL TASKS MANAGED BY AI AGENTS
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: 'easeOut' }}
+          className="mb-10 flex h-[120px] w-[120px] items-center justify-center"
+        >
+          <div className="hero-logo" />
+        </motion.div>
+
+        <div className="space-y-4">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+            className="text-[72px] font-[800] leading-[0.95]"
           >
-            Schedule a demo
-          </a>
-          <a
+            Build Smarter.
+          </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+            className="text-[72px] font-[800] leading-[0.95] bg-gradient-to-r from-[#C8A8E9] to-[#FF947A] bg-clip-text text-transparent"
+          >
+            Automate Everything.
+          </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
+            className="text-[72px] font-[800] leading-[0.95]"
+          >
+            Grow Faster.
+          </motion.h1>
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
+          className="mt-8 max-w-[600px] text-[18px] text-[#A0A0B8]"
+        >
+          Cognixeno Tech delivers AI-powered mobile apps, web platforms, automation systems and intelligent chatbots — all managed end-to-end by our autonomous AI agents.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
+          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+        >
+          <motion.a
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
             href="#solutions"
-            className="inline-flex items-center justify-center rounded-full border border-slate-700 px-7 py-3 text-sm text-slate-200 transition hover:border-cyan-300 hover:text-white"
+            className="inline-flex items-center justify-center rounded-[10px] bg-gradient-to-r from-[#C8A8E9] to-[#8B4FBF] px-[32px] py-[14px] text-[16px] font-semibold text-white shadow-[0_20px_60px_rgba(200,168,233,0.18)] hover:brightness-110"
           >
-            Explore platform
-            <FiArrowRight className="ml-2" />
-          </a>
-        </div>
+            Explore Our Services
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+            href="#agents"
+            className="inline-flex items-center justify-center rounded-[10px] border border-[#C8A8E9] bg-transparent px-[32px] py-[14px] text-[16px] font-semibold text-[#C8A8E9] hover:bg-[rgba(200,168,233,0.1)]"
+          >
+            Meet Our AI Agents
+          </motion.a>
+        </motion.div>
 
-        <div className="mt-14 grid gap-6 rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-panel backdrop-blur-xl sm:grid-cols-3">
-          <div className="space-y-3">
-            <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-300 shadow-glow">
-              <FiShield size={20} />
-            </div>
-            <p className="text-sm text-slate-300">Zero trust automation across every edge and cloud environment.</p>
-          </div>
-          <div className="space-y-3">
-            <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-500/10 text-violet-300 shadow-glow">
-              <FiServer size={20} />
-            </div>
-            <p className="text-sm text-slate-300">Real-time observability with adaptive AI signal fusion.</p>
-          </div>
-          <div className="space-y-3">
-            <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-600/20 text-slate-100 shadow-glow">
-              <span className="text-xs uppercase tracking-[0.28em]">API</span>
-            </div>
-            <p className="text-sm text-slate-300">Enterprise-grade APIs to accelerate deployment and integrate workflows.</p>
+        <div className="mt-16">
+          <div className="hero-scroll-indicator">
+            <FiChevronDown size={24} />
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

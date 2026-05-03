@@ -22,7 +22,7 @@ const reviews = [
 
 export default function Testimonials() {
   return (
-    <section className="space-y-10">
+    <section className="section section--lavender space-y-10">
       <div className="max-w-3xl">
         <span className="section-title text-sm text-cyan-300/70">Trusted by leaders</span>
         <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">Organizations choose Cognixeno when resilience matters most.</h2>
@@ -35,7 +35,7 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
             transition={{ delay: index * 0.1, duration: 0.55 }}
-            className="rounded-[2rem] border border-white/10 bg-slate-950/80 p-8 shadow-panel backdrop-blur-xl"
+            className="glass-panel rounded-[2rem] p-8"
           >
             <p className="text-slate-300">“{review.quote}”</p>
             <div className="mt-6 text-sm text-slate-400">
