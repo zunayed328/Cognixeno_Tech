@@ -4,29 +4,33 @@ import { motion } from 'framer-motion'
 
 export default function ContactCTA() {
   return (
-    <section className="relative overflow-hidden bg-black py-24">
-      <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-[#FF947A] opacity-15 blur-3xl" />
-      <div className="absolute -top-16 right-0 h-80 w-80 rounded-full bg-[#C8A8E9] opacity-15 blur-3xl" />
-      <div className="absolute left-0 -bottom-16 h-80 w-80 rounded-full bg-[#E1FF51] opacity-15 blur-3xl" />
-      <div className="absolute right-0 -bottom-20 h-72 w-72 rounded-full bg-[#F7B638] opacity-15 blur-3xl" />
+    <section className="relative overflow-hidden py-24 sm:py-32" style={{ background: 'linear-gradient(180deg, #080810, #0a0a14)' }}>
+      {/* Ambient blurs */}
+      <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-[#FF947A] opacity-10 blur-3xl pointer-events-none" />
+      <div className="absolute -top-16 right-0 h-80 w-80 rounded-full bg-[#C8A8E9] opacity-10 blur-3xl pointer-events-none" />
+      <div className="absolute left-0 -bottom-16 h-80 w-80 rounded-full bg-[#E1FF51] opacity-10 blur-3xl pointer-events-none" />
+      <div className="absolute right-0 -bottom-20 h-72 w-72 rounded-full bg-[#F7B638] opacity-10 blur-3xl pointer-events-none" />
 
-      <div className="relative mx-auto flex min-h-[calc(100vh-6rem)] w-full max-w-6xl flex-col items-center justify-center px-6 text-center">
+      <div className="relative mx-auto max-w-6xl px-6 text-center">
+        {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7 }}
-          className="mb-8 inline-flex rounded-full border border-white/10 bg-white/10 px-5 py-2 text-xs uppercase tracking-[0.35em] text-white shadow-[0_0_30px_rgba(255,255,255,0.08)] backdrop-blur-xl"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8"
+          style={{ background: 'rgba(247,182,56,0.08)', border: '1px solid rgba(247,182,56,0.2)', boxShadow: '0 0 20px rgba(247,182,56,0.1)' }}
         >
-          GET STARTED TODAY
+          <div className="w-1.5 h-1.5 rounded-full bg-[#F7B638]" />
+          <span className="text-[11px] font-bold tracking-[2px] text-[#F7B638] uppercase">Get Started Today</span>
         </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="max-w-[900px] text-[56px] font-bold leading-[1.02] text-white sm:text-6xl"
+          className="max-w-[900px] mx-auto text-4xl sm:text-5xl lg:text-[56px] font-extrabold leading-[1.1] text-white tracking-[-1px]"
         >
           Ready to Build Your Digital Future?
         </motion.h2>
@@ -34,43 +38,79 @@ export default function ContactCTA() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-6 max-w-[600px] text-[18px] leading-8 text-slate-400"
+          className="mt-6 max-w-[600px] mx-auto text-lg leading-8 text-[#A0A0B8]"
         >
-          Tell us what you need. Our AI agents will handle everything from planning to delivery — professionally, efficiently, intelligently.
+          Tell us what you need. Our AI agents will handle everything from planning to delivery.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.75, delay: 0.3 }}
-          className="mt-16 w-full max-w-[500px] rounded-[32px] border border-white/10 bg-[rgba(255,255,255,0.05)] p-8 shadow-[0_40px_120px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-5 mx-auto w-[60px] h-[3px] rounded-[2px] origin-center"
+          style={{ background: 'linear-gradient(90deg, #F7B638, #780115)', boxShadow: '0 0 12px rgba(247,182,56,0.5)' }}
+        />
+
+        {/* Form card */}
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+          className="mt-16 mx-auto max-w-[520px] relative overflow-hidden"
+          style={{
+            background: 'rgba(255,255,255,0.03)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            borderRadius: '28px',
+            padding: '52px 48px',
+            boxShadow: '0 0 0 1px rgba(255,255,255,0.03), 0 30px 80px rgba(0,0,0,0.5), 0 0 100px rgba(247,182,56,0.06), inset 0 1px 0 rgba(255,255,255,0.05)',
+          }}
         >
+          {/* Corner glow */}
+          <div className="absolute top-0 right-0 w-[120px] h-[120px] pointer-events-none" style={{ background: 'radial-gradient(circle at top right, rgba(247,182,56,0.08), transparent 70%)' }} />
+
           <form className="space-y-6">
-            <label className="block text-left text-sm font-semibold text-white/90">
-              Full Name
-              <input
-                type="text"
-                placeholder="Enter your full name"
-                className="mt-3 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-slate-500 outline-none transition focus:border-[#C8A8E9] focus:ring-2 focus:ring-[#C8A8E9]/30"
-              />
-            </label>
+            {[
+              { label: 'Full Name', type: 'text', placeholder: 'Enter your full name' },
+              { label: 'Email Address', type: 'email', placeholder: 'Enter your email' },
+            ].map((field) => (
+              <label key={field.label} className="block text-left">
+                <span className="text-[13px] font-semibold text-[rgba(255,255,255,0.7)] tracking-[0.5px]">{field.label}</span>
+                <input
+                  type={field.type}
+                  placeholder={field.placeholder}
+                  className="mt-2 w-full text-[15px] text-white rounded-xl px-[18px] py-[14px] outline-none"
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    transition: 'all 200ms ease',
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = 'rgba(200,168,233,0.5)'
+                    e.target.style.background = 'rgba(200,168,233,0.05)'
+                    e.target.style.boxShadow = '0 0 0 4px rgba(200,168,233,0.08), 0 4px 12px rgba(0,0,0,0.2)'
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = 'rgba(255,255,255,0.08)'
+                    e.target.style.background = 'rgba(255,255,255,0.04)'
+                    e.target.style.boxShadow = 'none'
+                  }}
+                />
+              </label>
+            ))}
 
-            <label className="block text-left text-sm font-semibold text-white/90">
-              Email Address
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="mt-3 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-slate-500 outline-none transition focus:border-[#C8A8E9] focus:ring-2 focus:ring-[#C8A8E9]/30"
-              />
-            </label>
-
-            <label className="block text-left text-sm font-semibold text-white/90">
-              Service Needed
+            <label className="block text-left">
+              <span className="text-[13px] font-semibold text-[rgba(255,255,255,0.7)] tracking-[0.5px]">Service Needed</span>
               <select
-                className="mt-3 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white outline-none transition focus:border-[#C8A8E9] focus:ring-2 focus:ring-[#C8A8E9]/30"
+                className="mt-2 w-full text-[15px] text-white rounded-xl px-[18px] py-[14px] outline-none"
+                style={{
+                  background: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  transition: 'all 200ms ease',
+                }}
               >
                 <option value="mobile">Mobile App Development</option>
                 <option value="web">Web Development</option>
@@ -81,20 +121,45 @@ export default function ContactCTA() {
               </select>
             </label>
 
-            <label className="block text-left text-sm font-semibold text-white/90">
-              Project Description
+            <label className="block text-left">
+              <span className="text-[13px] font-semibold text-[rgba(255,255,255,0.7)] tracking-[0.5px]">Project Description</span>
               <textarea
                 rows={4}
                 placeholder="Tell us about your project"
-                className="mt-3 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-slate-500 outline-none transition focus:border-[#C8A8E9] focus:ring-2 focus:ring-[#C8A8E9]/30"
+                className="mt-2 w-full text-[15px] text-white rounded-xl px-[18px] py-[14px] outline-none resize-none"
+                style={{
+                  background: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  transition: 'all 200ms ease',
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = 'rgba(200,168,233,0.5)'
+                  e.target.style.background = 'rgba(200,168,233,0.05)'
+                  e.target.style.boxShadow = '0 0 0 4px rgba(200,168,233,0.08), 0 4px 12px rgba(0,0,0,0.2)'
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(255,255,255,0.08)'
+                  e.target.style.background = 'rgba(255,255,255,0.04)'
+                  e.target.style.boxShadow = 'none'
+                }}
               />
             </label>
 
             <button
               type="submit"
-              className="mt-1 inline-flex h-[54px] w-full items-center justify-center rounded-[10px] bg-gradient-to-r from-[#F7B638] to-[#780115] text-sm font-semibold uppercase text-white shadow-[0_0_40px_rgba(247,182,56,0.3)] transition duration-300 hover:brightness-110 hover:scale-[1.02]"
+              className="relative w-full overflow-hidden text-white font-extrabold text-base tracking-[0.5px] cursor-pointer"
+              style={{
+                padding: '18px 32px',
+                borderRadius: '14px',
+                background: 'linear-gradient(135deg, #F7B638 0%, #E0961A 40%, #780115 100%)',
+                border: 'none',
+                boxShadow: '0 4px 15px rgba(247,182,56,0.3), 0 8px 30px rgba(120,1,21,0.2)',
+                transition: 'all 300ms ease',
+              }}
             >
-              Submit to AI Agent Queue
+              {/* Shine effect */}
+              <div className="absolute inset-0 rounded-[14px] pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%)' }} />
+              <span className="relative z-10">Submit to AI Agent Queue</span>
             </button>
           </form>
 

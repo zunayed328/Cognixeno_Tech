@@ -424,3 +424,24 @@ small,
     offset-distance: 100%;
   }
 }
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(225, 255, 81, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(225, 255, 81, 0.5);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+

@@ -1,224 +1,263 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FiSmartphone, FiCode, FiZap, FiMail, FiMessageCircle } from 'react-icons/fi'
-import { FaCogs } from 'react-icons/fa'
+import { FiSmartphone, FiGlobe, FiCpu, FiZap, FiMail, FiMessageCircle } from 'react-icons/fi'
 
 const services = [
   {
-    id: 'mobile',
-    icon: FiSmartphone,
-    accent: '#FF947A',
-    accentBg: '#025259',
+    id: 'mobile-app',
+    number: '01',
     title: 'Mobile App Development',
-    description: 'Native and cross-platform apps for iOS and Android, designed and deployed by our AI development agents.',
-    tags: ['iOS', 'Android', 'Flutter', 'React Native'],
-    tagBg: 'bg-[#025259]',
-    tagText: 'text-[#FF947A]',
-    tagBorder: 'border-[rgba(255,148,122,0.3)]'
+    description: 'Native and cross-platform mobile applications with fluid animations, offline support, and seamless user experiences.',
+    tags: ['React Native', 'Flutter', 'iOS', 'Android'],
+    accent: '#FF947A',
+    icon: FiSmartphone,
+    cta: 'Explore Service',
   },
   {
-    id: 'web',
-    icon: FiCode,
-    accent: '#025259',
-    accentBg: '#FF947A',
+    id: 'web-dev',
+    number: '02',
     title: 'Web Development',
-    description: 'Custom websites, landing pages and full-stack platforms with seamless performance and modern design.',
-    tags: ['Next.js', 'React', 'Node.js', 'Tailwind'],
-    tagBg: 'bg-[rgba(2,82,89,0.3)]',
-    tagText: 'text-[#FF947A]',
-    tagBorder: 'border-[rgba(2,82,89,0.5)]'
+    description: 'High-performance web platforms built with modern frameworks, optimized for speed, SEO, and conversion.',
+    tags: ['Next.js', 'React', 'TypeScript', 'Node.js'],
+    accent: '#FF947A',
+    icon: FiGlobe,
+    cta: 'Explore Service',
   },
   {
     id: 'ai-solutions',
-    icon: FiZap,
-    accent: '#C8A8E9',
-    accentBg: '#1A0030',
+    number: '03',
     title: 'AI-Powered Solutions',
-    description: 'GPT-integrated apps and platforms with predictive features, smart UI, and AI-driven user experiences.',
-    tags: ['GPT-4', 'LangChain', 'Smart UI', 'AI APIs'],
-    tagBg: 'bg-[#1A0030]',
-    tagText: 'text-[#C8A8E9]',
-    tagBorder: 'border-[#C8A8E9]/30',
-    hasParticles: true
+    description: 'GPT-integrated platforms with predictive AI, smart recommendations, and autonomous user experiences.',
+    tags: ['GPT-4', 'LangChain', 'Vector DB', 'RAG'],
+    accent: '#C8A8E9',
+    icon: FiCpu,
+    cta: 'Explore Service',
   },
   {
     id: 'automation',
-    icon: FiZap,
-    accent: '#E1FF51',
-    accentBg: '#00272C',
+    number: '04',
     title: 'AI Automation',
-    description: 'Automate repetitive workflows for businesses and educational institutions using intelligent AI agent pipelines.',
-    tags: ['Workflow AI', 'Business Ops', 'EdTech', 'n8n'],
-    tagBg: 'bg-[rgba(0,39,44,0.6)]',
-    tagText: 'text-[#E1FF51]',
-    tagBorder: 'border-[#E1FF51]/40',
-    hasFlowchart: true
+    description: 'Automate repetitive workflows for businesses and institutions using intelligent AI agent pipelines.',
+    tags: ['Workflow AI', 'n8n', 'Zapier', 'Custom'],
+    accent: '#E1FF51',
+    icon: FiZap,
+    cta: 'Explore Service',
   },
   {
-    id: 'email',
-    icon: FiMail,
-    accent: '#F7B638',
-    accentBg: '#780115',
+    id: 'email-support',
+    number: '05',
     title: 'Professional Email Support',
-    description: 'AI-managed email systems with smart drafting, inbox automation, filtering and response management.',
-    tags: ['AI Drafting', 'Smart Filter', 'Auto-Response'],
-    tagBg: 'bg-[rgba(120,1,21,0.4)]',
-    tagText: 'text-[#F7B638]',
-    tagBorder: 'border-[#F7B638]/30'
+    description: 'Enterprise-grade email automation with smart routing, AI-powered responses, and analytics dashboards.',
+    tags: ['SMTP', 'Templates', 'Analytics', 'API'],
+    accent: '#F7B638',
+    icon: FiMail,
+    cta: 'Explore Service',
   },
   {
     id: 'chatbots',
+    number: '06',
+    title: 'AI Chatbot Solutions',
+    description: 'Custom chatbots for e-commerce and personal use — handling queries, sales, support and lead capture 24/7.',
+    tags: ['WhatsApp', 'Web Widget', 'E-Commerce'],
+    accent: '#F7B638',
     icon: FiMessageCircle,
-    accent: '#780115',
-    accentAlt: '#F7B638',
-    title: 'AI Auto Chatbots',
-    description: 'Custom chatbots for personal use and e-commerce — handling queries, sales, support and lead capture 24/7.',
-    tags: ['E-Commerce Bot', 'Personal Bot', 'WhatsApp', 'Web Widget'],
-    tagBg: 'bg-[rgba(120,1,21,0.4)]',
-    tagText: 'text-[#F7B638]',
-    tagBorder: 'border-[#F7B638]/30'
-  }
+    cta: 'Explore Service',
+  },
 ]
 
-const ServiceCard = ({ service, index }) => {
-  const Icon = service.icon
+const ServiceCard = ({ service, index }: { service: typeof services[number]; index: number }) => {
+  const a = service.accent
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, delay: index * 0.08 }}
-      className="service-card glass-panel group relative overflow-hidden rounded-2xl p-6 transition-all duration-300"
-      style={{ borderLeft: `3px solid ${service.accent}` }}
+      initial={{ opacity: 0, y: 60, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.4, 0, 0.2, 1] }}
+      className="group relative flex flex-col overflow-hidden"
+      style={{
+        background: 'rgba(255,255,255,0.03)',
+        backdropFilter: 'blur(24px)',
+        WebkitBackdropFilter: 'blur(24px)',
+        border: '1px solid rgba(255,255,255,0.07)',
+        borderRadius: '20px',
+        padding: '32px',
+        boxShadow: '0 4px 6px rgba(0,0,0,0.2), 0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
+        transition: 'all 350ms cubic-bezier(0.4, 0, 0.2, 1)',
+      }}
+      whileHover={{
+        y: -8,
+        transition: { duration: 0.35 },
+      }}
     >
-      {service.hasParticles && (
-        <div className="absolute inset-0 pointer-events-none">
-          {[...Array(4)].map((_, i) => (
-            <div
-              key={i}
-              className="service-particle"
-              style={{
-                top: `${20 + i * 20}%`,
-                left: `${15 + i * 18}%`,
-                background: `${service.accent}`,
-                animationDelay: `${i * 0.4}s`
-              }}
-            />
-          ))}
-        </div>
-      )}
-
-      {service.hasFlowchart && (
-        <div className="absolute bottom-4 right-4 opacity-40 pointer-events-none">
-          <div className="flex gap-1">
-            {[...Array(3)].map((_, i) => (
-              <div
-                key={i}
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ background: service.accent }}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      <div className="relative z-10 space-y-4">
-        <div className="relative inline-block">
-          <div
-            className="absolute inset-0 rounded-full blur-xl opacity-20"
-            style={{ background: `radial-gradient(circle, ${service.accent})`, width: 80, height: 80 }}
-          />
-          <div
-            className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl"
-            style={{ background: `${service.accent}20`, color: service.accent }}
-          >
-            <Icon size={24} />
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-xl font-bold text-white">{service.title}</h3>
-          <p className="mt-2 text-sm text-[#A0A0B8]">{service.description}</p>
-        </div>
-
-        <div className="flex flex-wrap gap-2">
-          {service.tags.map((tag) => (
-            <span
-              key={tag}
-              className={`text-xs px-2.5 py-1 rounded-full border ${service.tagBg} ${service.tagText} ${service.tagBorder} border-opacity-100`}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <a
-          href="#"
-          className="inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-300"
-          style={{ color: service.accentAlt || service.accent }}
-        >
-          Explore →
-        </a>
-      </div>
-
+      {/* Left border accent */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-2xl"
+        className="absolute left-0 top-[20%] bottom-[20%] w-[3px] rounded-r-sm opacity-70 group-hover:opacity-100"
         style={{
-          boxShadow: `0 0 24px ${service.accent}40, inset 0 0 1px ${service.accent}20`,
-          borderLeft: `3px solid ${service.accent}`,
-          borderRadius: '16px'
+          background: `linear-gradient(180deg, transparent 0%, ${a} 50%, transparent 100%)`,
+          boxShadow: `2px 0 12px ${a}66`,
+          transition: 'opacity 300ms',
         }}
       />
+
+      {/* Corner glow decoration */}
+      <div
+        className="absolute top-0 right-0 w-[120px] h-[120px] pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at top right, ${a}14 0%, transparent 70%)`,
+        }}
+      />
+
+      {/* Bottom shine line */}
+      <div
+        className="absolute bottom-0 left-0 w-full h-[1px] opacity-0 group-hover:opacity-100 pointer-events-none"
+        style={{
+          background: `linear-gradient(90deg, transparent 0%, ${a}4D 50%, transparent 100%)`,
+          transition: 'opacity 300ms',
+        }}
+      />
+
+      {/* Hover border glow */}
+      <div
+        className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 pointer-events-none"
+        style={{
+          border: `1px solid ${a}66`,
+          boxShadow: `0 8px 12px rgba(0,0,0,0.3), 0 30px 80px rgba(0,0,0,0.5), 0 0 40px ${a}26, inset 0 1px 0 rgba(255,255,255,0.08)`,
+          transition: 'opacity 350ms cubic-bezier(0.4, 0, 0.2, 1)',
+        }}
+      />
+
+      {/* Top row: Icon + Number */}
+      <div className="relative z-10 flex items-start justify-between">
+        <div
+          className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center group-hover:shadow-lg"
+          style={{
+            background: `${a}1F`,
+            border: `1px solid ${a}40`,
+            boxShadow: `0 0 20px ${a}33`,
+            transition: 'box-shadow 300ms',
+          }}
+        >
+          <service.icon size={24} style={{ color: a }} />
+        </div>
+        <span
+          className="text-[11px] font-bold tracking-[2px]"
+          style={{ color: `${a}80` }}
+        >
+          {service.number}
+        </span>
+      </div>
+
+      {/* Title */}
+      <h3 className="relative z-10 mt-6 text-xl font-bold text-white tracking-[-0.3px] leading-[1.3]">
+        {service.title}
+      </h3>
+
+      {/* Accent line */}
+      <div
+        className="relative z-10 mt-3 w-8 h-[2px] rounded-[1px]"
+        style={{
+          background: a,
+          boxShadow: `0 0 8px ${a}99`,
+        }}
+      />
+
+      {/* Description */}
+      <p className="relative z-10 mt-4 text-sm text-[#A0A0B8] leading-[1.8] flex-1">
+        {service.description}
+      </p>
+
+      {/* Tags */}
+      <div className="relative z-10 mt-5 flex flex-wrap gap-2">
+        {service.tags.map(tag => (
+          <span
+            key={tag}
+            className="text-[11px] font-semibold tracking-[0.5px] px-3 py-[5px] rounded-full"
+            style={{
+              background: `${a}14`,
+              border: `1px solid ${a}33`,
+              color: a,
+              transition: 'background 200ms',
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      {/* Bottom row: CTA + Arrow */}
+      <div className="relative z-10 mt-7 flex items-center justify-between">
+        <span
+          className="flex items-center gap-1.5 text-[13px] font-semibold group-hover:gap-2.5"
+          style={{ color: a, transition: 'gap 200ms' }}
+        >
+          {service.cta}
+          <span className="text-sm">→</span>
+        </span>
+        <div
+          className="w-7 h-7 rounded-full flex items-center justify-center group-hover:bg-opacity-100"
+          style={{
+            border: `1px solid ${a}4D`,
+            color: a,
+            transition: 'all 300ms',
+          }}
+        >
+          <span className="text-xs">→</span>
+        </div>
+      </div>
     </motion.div>
   )
 }
 
 export default function Services() {
   return (
-    <section id="solutions" className="section section--salmon px-6 py-20">
+    <section id="solutions" className="section section--salmon px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl">
+        {/* Section header with badge */}
         <div className="mb-16 text-center">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="inline-block text-sm font-semibold uppercase tracking-[3px] text-[#E1FF51]"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6"
+            style={{
+              background: 'rgba(200,168,233,0.08)',
+              border: '1px solid rgba(200,168,233,0.2)',
+              boxShadow: '0 0 20px rgba(200,168,233,0.1)',
+            }}
           >
-            WHAT WE BUILD
-          </motion.span>
-          
+            <div className="w-1.5 h-1.5 rounded-full bg-[#C8A8E9]" />
+            <span className="text-[11px] font-bold tracking-[2px] text-[#C8A8E9] uppercase">
+              What We Build
+            </span>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 text-4xl font-bold text-white sm:text-5xl"
+            className="text-4xl font-extrabold text-white sm:text-5xl tracking-[-1px] leading-[1.15]"
           >
             Our Core Services
           </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-base text-[#A0A0B8]"
-          >
-            AI-powered development, automation, and support solutions
-          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-6 mx-auto h-px w-24 origin-center bg-gradient-to-r from-transparent via-[#C8A8E9] to-transparent"
+            className="mt-5 mx-auto w-[60px] h-[3px] rounded-[2px] origin-center"
+            style={{
+              background: 'linear-gradient(90deg, #C8A8E9, #F7B638)',
+              boxShadow: '0 0 12px rgba(200,168,233,0.5)',
+            }}
           />
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* 3-column grid */}
+        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}
