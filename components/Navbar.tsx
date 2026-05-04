@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FiSmartphone, FiGlobe, FiCpu, FiZap, FiMail, FiMessageCircle, FiMenu, FiX } from 'react-icons/fi'
+import AnimatedLogo from './ui/AnimatedLogo'
+import AnimatedCompanyName from './ui/AnimatedCompanyName'
 
 const serviceLinks = [
   { name: 'Mobile App Development', desc: 'iOS & Android apps', href: '/services/mobile-app', icon: FiSmartphone, color: '#FF947A' },
@@ -61,14 +63,10 @@ export default function Navbar() {
         }}
       >
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
+          {/* Animated Logo + Name */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-sm font-black text-white">
-              X
-            </div>
-            <span className="text-sm font-bold uppercase tracking-[0.25em] text-white hidden sm:inline">
-              Cognixeno
-            </span>
+            <AnimatedLogo size={36} showGlow={true} animate={true} />
+            <AnimatedCompanyName size="navbar" animate={true} />
           </Link>
 
           {/* Desktop nav */}

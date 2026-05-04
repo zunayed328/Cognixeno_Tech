@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FiLinkedin, FiGithub, FiTwitter, FiMail } from 'react-icons/fi'
+import AnimatedLogo from './ui/AnimatedLogo'
 
 const servicesLinks = [
   { name: 'Mobile App Development', href: '/services/mobile-app' },
@@ -35,15 +36,7 @@ export default function Footer() {
         {/* Brand */}
         <div className="space-y-6">
           <Link href="/" className="flex items-center gap-3">
-            <div
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[12px] text-lg font-black text-white"
-              style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
-              }}
-            >
-              X
-            </div>
+            <AnimatedLogo size={40} showGlow={false} animate={false} />
             <p className="text-sm font-bold uppercase tracking-[0.35em] text-white">Cognixeno Tech</p>
           </Link>
           <p className="max-w-[220px] text-sm leading-6 text-[#A0A0B8]">
