@@ -7,6 +7,12 @@ import PageHero from '../../components/ui/PageHero'
 import GlassCard from '../../components/ui/GlassCard'
 import SectionBadge from '../../components/ui/SectionBadge'
 import AnimatedButton from '../../components/ui/AnimatedButton'
+import MobileAppAnimation from '../../components/animations/MobileAppAnimation'
+import WebDevAnimation from '../../components/animations/WebDevAnimation'
+import AISolutionsAnimation from '../../components/animations/AISolutionsAnimation'
+import AIAutomationAnimation from '../../components/animations/AIAutomationAnimation'
+import EmailSupportAnimation from '../../components/animations/EmailSupportAnimation'
+import ChatbotsAnimation from '../../components/animations/ChatbotsAnimation'
 
 const services = [
   { id: 'mobile-app', title: 'Mobile App Development', desc: 'Native and cross-platform mobile applications with fluid animations, offline support, and seamless UX.', tags: ['React Native', 'Flutter', 'iOS', 'Android'], icon: FiSmartphone, accent: '#FF947A' },
@@ -15,6 +21,15 @@ const services = [
   { id: 'ai-automation', title: 'AI Automation', desc: 'Automate repetitive workflows for businesses and institutions using intelligent AI agent pipelines.', tags: ['Workflow AI', 'n8n', 'Zapier', 'Custom'], icon: FiZap, accent: '#E1FF51' },
   { id: 'email-support', title: 'Professional Email Support', desc: 'Enterprise-grade email automation with smart routing, AI-powered responses, and analytics dashboards.', tags: ['SMTP', 'Templates', 'Analytics', 'API'], icon: FiMail, accent: '#F7B638' },
   { id: 'chatbots', title: 'AI Chatbot Solutions', desc: 'Custom chatbots for e-commerce and personal use — handling queries, sales, support and lead capture 24/7.', tags: ['WhatsApp', 'Web Widget', 'E-Commerce'], icon: FiMessageCircle, accent: '#F7B638' },
+]
+
+const animationComponents = [
+  MobileAppAnimation,
+  WebDevAnimation,
+  AISolutionsAnimation,
+  AIAutomationAnimation,
+  EmailSupportAnimation,
+  ChatbotsAnimation,
 ]
 
 const steps = [
@@ -33,44 +48,55 @@ export default function ServicesContent() {
         subtitle="From mobile apps to AI automation — every service is built, tested, and delivered by our specialized AI agents. Infinite possibilities."
       />
 
-      {/* Services Grid */}
+      {/* Services with Animations — Alternating Layout */}
       <section className="relative py-24 px-6" style={{ background: 'linear-gradient(180deg, #080810, #0D0D1A)' }}>
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => {
-              const Icon = s.icon
-              return (
-                <motion.div
-                  key={s.id}
-                  initial={{ opacity: 0, y: 60, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, margin: '-50px' }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                >
-                  <Link href={`/services/${s.id}`} className="block h-full">
-                    <GlassCard accentColor={s.accent} className="h-full flex flex-col">
-                      <div className="flex items-start justify-between">
-                        <div className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center" style={{ background: `${s.accent}1F`, border: `1px solid ${s.accent}40`, boxShadow: `0 0 20px ${s.accent}33` }}>
-                          <Icon size={24} style={{ color: s.accent }} />
-                        </div>
-                      </div>
-                      <h3 className="mt-6 text-xl font-bold text-white">{s.title}</h3>
-                      <div className="mt-3 w-8 h-[2px] rounded-[1px]" style={{ background: s.accent, boxShadow: `0 0 8px ${s.accent}99` }} />
-                      <p className="mt-4 text-sm text-[#A0A0B8] leading-[1.8] flex-1">{s.desc}</p>
-                      <div className="mt-5 flex flex-wrap gap-2">
-                        {s.tags.map(t => (
-                          <span key={t} className="text-[11px] font-semibold tracking-[0.5px] px-3 py-[5px] rounded-full" style={{ background: `${s.accent}14`, border: `1px solid ${s.accent}33`, color: s.accent }}>{t}</span>
-                        ))}
-                      </div>
-                      <div className="mt-6 flex items-center gap-1.5 text-[13px] font-semibold group-hover:gap-2.5" style={{ color: s.accent, transition: 'gap 200ms' }}>
-                        View Details <FiArrowRight size={14} />
-                      </div>
-                    </GlassCard>
+        <div className="mx-auto max-w-7xl space-y-24">
+          {services.map((s, i) => {
+            const Icon = s.icon
+            const AnimComponent = animationComponents[i]
+            const isReversed = i % 2 === 1
+
+            return (
+              <motion.div
+                key={s.id}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-16`}
+              >
+                {/* Info side */}
+                <div className="flex-1 max-w-xl">
+                  <div className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center mb-6" style={{ background: `${s.accent}1F`, border: `1px solid ${s.accent}40`, boxShadow: `0 0 20px ${s.accent}33` }}>
+                    <Icon size={24} style={{ color: s.accent }} />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-[-0.5px]">{s.title}</h3>
+                  <div className="mt-3 w-10 h-[2px] rounded-[1px]" style={{ background: s.accent, boxShadow: `0 0 8px ${s.accent}99` }} />
+                  <p className="mt-5 text-[#A0A0B8] leading-[1.8]">{s.desc}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {s.tags.map(t => (
+                      <span key={t} className="text-[11px] font-semibold tracking-[0.5px] px-3 py-[5px] rounded-full" style={{ background: `${s.accent}14`, border: `1px solid ${s.accent}33`, color: s.accent }}>{t}</span>
+                    ))}
+                  </div>
+                  <Link
+                    href={`/services/${s.id}`}
+                    className="inline-flex items-center gap-2 mt-8 text-[14px] font-semibold group"
+                    style={{ color: s.accent }}
+                  >
+                    View Details
+                    <FiArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
-                </motion.div>
-              )
-            })}
-          </div>
+                </div>
+
+                {/* Animation side */}
+                <div className="flex-shrink-0 flex items-center justify-center">
+                  <div className="relative rounded-2xl overflow-visible p-4" style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.04)' }}>
+                    <AnimComponent />
+                  </div>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </section>
 
