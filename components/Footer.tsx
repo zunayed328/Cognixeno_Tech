@@ -1,18 +1,25 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { FiLinkedin, FiGithub, FiTwitter, FiMail } from 'react-icons/fi'
 
 const servicesLinks = [
-  'Mobile App Development',
-  'Web Development',
-  'AI-Powered Solutions',
-  'AI Automation',
-  'Email Support',
-  'AI Chatbots',
+  { name: 'Mobile App Development', href: '/services/mobile-app' },
+  { name: 'Web Development', href: '/services/web-development' },
+  { name: 'AI-Powered Solutions', href: '/services/ai-solutions' },
+  { name: 'AI Automation', href: '/services/ai-automation' },
+  { name: 'Email Support', href: '/services/email-support' },
+  { name: 'AI Chatbots', href: '/services/chatbots' },
 ]
 
-const companyLinks = ['About Us', 'Our AI Agents', 'Portfolio', 'Pricing', 'Blog']
+const companyLinks = [
+  { name: 'About Us', href: '/about' },
+  { name: 'Our AI Agents', href: '/ai-agents' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'Contact', href: '/contact' },
+]
 
 export default function Footer() {
   return (
@@ -27,7 +34,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-4 lg:px-8">
         {/* Brand */}
         <div className="space-y-6">
-          <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <div
               className="inline-flex h-11 w-11 items-center justify-center rounded-[12px] text-lg font-black text-white"
               style={{
@@ -38,7 +45,7 @@ export default function Footer() {
               X
             </div>
             <p className="text-sm font-bold uppercase tracking-[0.35em] text-white">Cognixeno Tech</p>
-          </div>
+          </Link>
           <p className="max-w-[220px] text-sm leading-6 text-[#A0A0B8]">
             Powered by AI. Built for the Future.
           </p>
@@ -87,9 +94,9 @@ export default function Footer() {
           <p className="text-[13px] font-bold uppercase tracking-[2px] text-white">Services</p>
           <div className="space-y-3 text-sm text-[#A0A0B8]">
             {servicesLinks.map((link) => (
-              <a
-                key={link}
-                href="#"
+              <Link
+                key={link.name}
+                href={link.href}
                 className="block"
                 style={{ transition: 'all 200ms' }}
                 onMouseEnter={(e) => {
@@ -101,8 +108,8 @@ export default function Footer() {
                   e.currentTarget.style.transform = 'translateX(0)'
                 }}
               >
-                {link}
-              </a>
+                {link.name}
+              </Link>
             ))}
           </div>
         </div>
@@ -112,9 +119,9 @@ export default function Footer() {
           <p className="text-[13px] font-bold uppercase tracking-[2px] text-white">Company</p>
           <div className="space-y-3 text-sm text-[#A0A0B8]">
             {companyLinks.map((link) => (
-              <a
-                key={link}
-                href="#"
+              <Link
+                key={link.name}
+                href={link.href}
                 className="block"
                 style={{ transition: 'all 200ms' }}
                 onMouseEnter={(e) => {
@@ -126,8 +133,8 @@ export default function Footer() {
                   e.currentTarget.style.transform = 'translateX(0)'
                 }}
               >
-                {link}
-              </a>
+                {link.name}
+              </Link>
             ))}
           </div>
         </div>
