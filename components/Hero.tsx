@@ -270,7 +270,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 2.4, ease: 'easeOut' }}
-          className="mt-8 max-w-[600px] text-base sm:text-[18px] text-[#A0A0B8]"
+          className="max-w-3xl mx-auto text-center px-4 mt-6 text-lg md:text-xl leading-relaxed text-white/80"
         >
           Cognixeno Tech delivers AI-powered mobile apps, web platforms,
           automation systems and intelligent chatbots — all managed end-to-end by
