@@ -16,8 +16,8 @@ export default function ContactCTA() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.3 }}
           className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8"
           style={{ background: 'rgba(247,182,56,0.08)', border: '1px solid rgba(247,182,56,0.2)', boxShadow: '0 0 20px rgba(247,182,56,0.1)' }}
         >
@@ -28,7 +28,7 @@ export default function ContactCTA() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.7, delay: 0.1 }}
           className="max-w-[900px] mx-auto text-4xl sm:text-5xl lg:text-[56px] font-extrabold leading-[1.1] text-white tracking-[-1px]"
         >
@@ -38,7 +38,7 @@ export default function ContactCTA() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           className="mt-6 max-w-[600px] mx-auto text-lg leading-8 text-[#A0A0B8]"
         >
@@ -48,8 +48,8 @@ export default function ContactCTA() {
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
           className="mt-5 mx-auto w-[60px] h-[3px] rounded-[2px] origin-center"
           style={{ background: 'linear-gradient(90deg, #F7B638, #780115)', boxShadow: '0 0 12px rgba(247,182,56,0.5)' }}
         />
@@ -58,7 +58,7 @@ export default function ContactCTA() {
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
           className="mt-16 mx-auto max-w-[520px] relative overflow-hidden"
           style={{

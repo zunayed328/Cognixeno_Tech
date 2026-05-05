@@ -75,7 +75,7 @@ export default function ServiceDetail({
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <SectionBadge text="What We Deliver" color={accent} />
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="mt-6 text-3xl sm:text-4xl font-extrabold text-white tracking-[-1px]">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6, delay: 0.1 }} className="mt-6 text-3xl sm:text-4xl font-extrabold text-white tracking-[-1px]">
               Key Features & Deliverables
             </motion.h2>
           </div>
@@ -83,7 +83,7 @@ export default function ServiceDetail({
             {features.map((f, i) => {
               const Icon = f.icon
               return (
-                <motion.div key={f.title} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.08 }}>
+                <motion.div key={f.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.3, delay: i * 0.08 }}>
                   <GlassCard accentColor={accent} className="h-full">
                     <div className="w-12 h-12 rounded-[14px] flex items-center justify-center" style={{ background: `${accent}1A`, border: `1px solid ${accent}33` }}>
                       <Icon size={22} style={{ color: accent }} />
@@ -104,14 +104,14 @@ export default function ServiceDetail({
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-16">
             <SectionBadge text="Our Process" color={accent} />
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-6 text-3xl sm:text-4xl font-extrabold text-white tracking-[-1px]">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} className="mt-6 text-3xl sm:text-4xl font-extrabold text-white tracking-[-1px]">
               How We Build It
             </motion.h2>
           </div>
           <div className="relative">
             <div className="absolute left-[27px] top-8 bottom-8 w-[2px]" style={{ background: `linear-gradient(180deg, ${accent}4D, ${accent}1A)` }} />
             {process.map((step, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.12 }} className="flex gap-6 py-6">
+              <motion.div key={i} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.3, delay: i * 0.12 }} className="flex gap-6 py-6">
                 <div className="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center text-lg font-extrabold relative z-10" style={{ background: `${accent}1A`, border: `2px solid ${accent}40`, color: accent }}>
                   {String(i + 1).padStart(2, '0')}
                 </div>
@@ -129,12 +129,12 @@ export default function ServiceDetail({
       <section className="relative py-20 px-6" style={{ background: 'linear-gradient(180deg, #080810, #0D0D1A)' }}>
         <div className="mx-auto max-w-4xl text-center">
           <SectionBadge text="Technology Stack" color={accent} />
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-6 text-2xl sm:text-3xl font-extrabold text-white tracking-[-1px]">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} className="mt-6 text-2xl sm:text-3xl font-extrabold text-white tracking-[-1px]">
             Built With Best-in-Class Tools
           </motion.h2>
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="mt-10 flex flex-wrap justify-center gap-3">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: 0.2 }} className="mt-10 flex flex-wrap justify-center gap-3">
             {techStack.map((tech, i) => (
-              <motion.span key={tech} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="px-4 py-2 rounded-full text-sm font-semibold" style={{ background: `${accent}14`, border: `1px solid ${accent}33`, color: accent }}>
+              <motion.span key={tech} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: i * 0.05 }} className="px-4 py-2 rounded-full text-sm font-semibold" style={{ background: `${accent}14`, border: `1px solid ${accent}33`, color: accent }}>
                 {tech}
               </motion.span>
             ))}
@@ -147,7 +147,7 @@ export default function ServiceDetail({
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <SectionBadge text="Related Services" color="#C8A8E9" />
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-6 text-2xl sm:text-3xl font-extrabold text-white">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} className="mt-6 text-2xl sm:text-3xl font-extrabold text-white">
               You Might Also Need
             </motion.h2>
           </div>
@@ -155,7 +155,7 @@ export default function ServiceDetail({
             {relatedServices.map((rs, i) => {
               const Icon = rs.icon
               return (
-                <motion.div key={rs.name} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                <motion.div key={rs.name} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: i * 0.1 }}>
                   <Link href={rs.href}>
                     <GlassCard accentColor={rs.accent}>
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${rs.accent}1A`, border: `1px solid ${rs.accent}33` }}>
@@ -176,7 +176,7 @@ export default function ServiceDetail({
 
       {/* CTA */}
       <section className="relative py-24 px-6 text-center" style={{ background: 'linear-gradient(180deg, #080810, #0a0a14)' }}>
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} className="max-w-xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-[-1px]">
             Ready to get started?
           </h2>

@@ -1,13 +1,14 @@
 import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 
-const Hero = dynamic(() => import('../components/Hero'))
-const Stats = dynamic(() => import('../components/Stats'))
-const Services = dynamic(() => import('../components/Services'))
-const AIAgents = dynamic(() => import('../components/AIAgents'))
-const WhyUs = dynamic(() => import('../components/WhyUs'))
-const ChatbotPreview = dynamic(() => import('../components/ChatbotPreview'))
-const Testimonials = dynamic(() => import('../components/Testimonials'))
-const ContactCTA = dynamic(() => import('../components/ContactCTA'))
+const Hero = dynamic(() => import('../components/Hero'), { ssr: false })
+const Stats = dynamic(() => import('../components/Stats'), { ssr: false })
+const Services = dynamic(() => import('../components/Services'), { ssr: false })
+const AIAgents = dynamic(() => import('../components/AIAgents'), { ssr: false })
+const WhyUs = dynamic(() => import('../components/WhyUs'), { ssr: false })
+const ChatbotPreview = dynamic(() => import('../components/ChatbotPreview'), { ssr: false })
+const Testimonials = dynamic(() => import('../components/Testimonials'), { ssr: false })
+const ContactCTA = dynamic(() => import('../components/ContactCTA'), { ssr: false })
 
 export default function Home() {
   return (
@@ -19,13 +20,27 @@ export default function Home() {
           <Hero />
         </div>
       </div>
-      <Stats />
-      <Services />
-      <AIAgents />
-      <WhyUs />
-      <ChatbotPreview />
-      <Testimonials />
-      <ContactCTA />
+      <Suspense fallback={<div className="h-40" />}>
+        <Stats />
+      </Suspense>
+      <Suspense fallback={<div className="h-96" />}>
+        <Services />
+      </Suspense>
+      <Suspense fallback={<div className="h-96" />}>
+        <AIAgents />
+      </Suspense>
+      <Suspense fallback={<div className="h-96" />}>
+        <WhyUs />
+      </Suspense>
+      <Suspense fallback={<div className="h-96" />}>
+        <ChatbotPreview />
+      </Suspense>
+      <Suspense fallback={<div className="h-64" />}>
+        <Testimonials />
+      </Suspense>
+      <Suspense fallback={<div className="h-64" />}>
+        <ContactCTA />
+      </Suspense>
     </main>
   )
 }

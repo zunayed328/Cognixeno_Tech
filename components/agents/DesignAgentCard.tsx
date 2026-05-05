@@ -61,7 +61,7 @@ export default function DesignAgentCard() {
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
           />
         )}
 
@@ -97,7 +97,7 @@ export default function DesignAgentCard() {
                 }
                 initial={{ opacity: 0 }}
                 animate={phase >= 3 ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0.3, delay: i * 0.1 }}
               />
 
               {/* Labels inside */}

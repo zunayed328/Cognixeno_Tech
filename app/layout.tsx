@@ -1,47 +1,37 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import ClientLayout from './client-layout'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import NavigationProgress from '../components/ui/NavigationProgress'
+import PageLoader from '../components/ui/PageLoader'
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' })
+const inter = Inter({ 
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap'
+})
 
 export const metadata: Metadata = {
   title: 'Cognixeno Tech — AI-Powered Digital Solutions',
-  description:
-    'Mobile apps, web development, AI automation and chatbots — all managed by intelligent AI agents.',
-  keywords: [
-    'AI development',
-    'mobile app',
-    'web development',
-    'AI automation',
-    'chatbot',
-    'Cognixeno Tech',
-  ],
-  metadataBase: new URL('https://cognixeno-tech.example.com'),
-  openGraph: {
-    title: 'Cognixeno Tech — AI-Powered Digital Solutions',
-    description:
-      'Mobile apps, web development, AI automation and chatbots — all managed by intelligent AI agents.',
-    url: 'https://cognixeno-tech.example.com',
-    siteName: 'Cognixeno Tech',
-    type: 'website',
-    locale: 'en_US',
-    images: [
-      {
-        url: 'https://cognixeno-tech.example.com/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Cognixeno Tech AI-Powered Digital Solutions',
-      },
-    ],
-  },
+  description: 'Mobile apps, web development, AI automation and intelligent chatbots managed by AI agents.',
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en" className={inter.className}>
-      <body>
-        <ClientLayout>{children}</ClientLayout>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.className} bg-[#080810] text-white antialiased overflow-x-hidden`}>
+        <PageLoader />
+        <NavigationProgress />
+        <Navbar />
+        <main>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )

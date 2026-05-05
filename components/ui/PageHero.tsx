@@ -58,7 +58,7 @@ export default function PageHero({
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
           className="mt-8 mx-auto w-[60px] h-[3px] rounded-[2px] origin-center"
           style={{
             background: `linear-gradient(90deg, ${badgeColor}, #F7B638)`,

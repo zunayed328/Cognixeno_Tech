@@ -46,7 +46,7 @@ export default function AgentCollaboration() {
             strokeDasharray="4 8"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ delay: i * 0.2, duration: 0.5 }}
+            transition={{ delay: i * 0.08, duration: 0.3 }}
           />
         ))}
 

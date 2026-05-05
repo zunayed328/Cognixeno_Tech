@@ -9,7 +9,7 @@ const nodes = [
   { id: 2, label: 'Transform', x: 140, y: 30 },
   { id: 3, label: 'API Call', x: 80, y: 65 },
   { id: 4, label: 'Database', x: 140, y: 80 },
-  { id: 5, label: 'Notify', x: 200, y: 50 },
+  { id: 5, label: 'Notify', x: 200, y: 20 },
   { id: 6, label: 'Log', x: 200, y: 100 },
   { id: 7, label: 'Done ✓', x: 250, y: 65 },
 ]
@@ -188,7 +188,7 @@ export default function AutomationAgentCard() {
             style={{ background: 'rgba(255,80,80,0.1)', border: '1px solid rgba(255,80,80,0.3)' }}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: [0, 1, 0.8, 1], scale: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
           >
             <span className="text-[7px] font-bold text-[#ff5050]">⚠ Error Detected</span>
           </motion.div>

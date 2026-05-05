@@ -252,7 +252,7 @@ export default function AIAutomationAnimation() {
           style={{ color: 'rgba(225,255,81,0.7)' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 0.8, repeat: Infinity }}
+          transition={{ duration: 0.4, repeat: Infinity }}
         >
           PROCESSING AT MAXIMUM CAPACITY
         </motion.span>

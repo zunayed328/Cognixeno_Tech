@@ -102,8 +102,8 @@ const DashboardCard = () => (
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${task.progress}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.5, ease: 'easeOut', delay: i * 0.2 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 1.5, ease: 'easeOut', delay: i * 0.08 }}
                   className="h-full rounded-full"
                   style={{
                     background: progressGradients[task.color],
@@ -126,8 +126,8 @@ const DashboardCard = () => (
             key={i}
             initial={{ height: 0 }}
             whileInView={{ height: `${h}%` }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: i * 0.1, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.4, delay: i * 0.1, ease: 'easeOut' }}
             className="flex-1 rounded-t"
             style={{
               background: 'linear-gradient(180deg, rgba(200,168,233,0.8), rgba(200,168,233,0.2))',
@@ -149,8 +149,8 @@ export default function WhyUs() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.3 }}
             className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6"
             style={{ background: 'rgba(200,168,233,0.08)', border: '1px solid rgba(200,168,233,0.2)', boxShadow: '0 0 20px rgba(200,168,233,0.1)' }}
           >
@@ -176,8 +176,8 @@ export default function WhyUs() {
             <motion.div
               initial={{ opacity: 0, scaleX: 0 }}
               whileInView={{ opacity: 1, scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               className="mt-5 w-[60px] h-[3px] rounded-[2px] origin-left"
               style={{ background: 'linear-gradient(90deg, #C8A8E9, #F7B638)', boxShadow: '0 0 12px rgba(200,168,233,0.5)' }}
             />
@@ -188,7 +188,7 @@ export default function WhyUs() {
                   key={feature.title}
                   initial={{ opacity: 0, x: 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="group flex items-start gap-4 py-[22px] border-b hover:bg-[rgba(200,168,233,0.04)]"
                   style={{ borderColor: 'rgba(255,255,255,0.04)', transition: 'background 200ms' }}

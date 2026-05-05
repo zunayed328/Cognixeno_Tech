@@ -84,10 +84,10 @@ export default function PricingContent() {
             {tiers.map((tier, i) => (
               <motion.div
                 key={tier.name}
-                initial={{ opacity: 0, y: 60 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.3, delay: i * 0.1 }}
                 className={`relative group overflow-hidden ${tier.popular ? 'lg:-mt-4 lg:mb-[-16px]' : ''}`}
                 style={{
                   background: 'rgba(255,255,255,0.03)',
@@ -155,12 +155,12 @@ export default function PricingContent() {
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <SectionBadge text="Compare Plans" color="#C8A8E9" />
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-6 text-2xl sm:text-3xl font-extrabold text-white">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} className="mt-6 text-2xl sm:text-3xl font-extrabold text-white">
               Feature Comparison
             </motion.h2>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="overflow-x-auto rounded-2xl" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} className="overflow-x-auto rounded-2xl" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
             <table className="w-full text-sm">
               <thead>
                 <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
@@ -199,14 +199,14 @@ export default function PricingContent() {
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-12">
             <SectionBadge text="FAQ" color="#F7B638" />
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-6 text-2xl sm:text-3xl font-extrabold text-white">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} className="mt-6 text-2xl sm:text-3xl font-extrabold text-white">
               Frequently Asked Questions
             </motion.h2>
           </div>
 
           <div className="space-y-3">
             {faqs.map((faq, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: i * 0.05 }}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full text-left p-5 rounded-xl flex items-center justify-between gap-4 transition-all duration-200"
@@ -242,7 +242,7 @@ export default function PricingContent() {
 
       {/* CTA */}
       <section className="relative py-24 px-6 text-center" style={{ background: 'linear-gradient(180deg, #0D0D1A, #0a0a14)' }}>
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} className="max-w-xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-[-1px]">Still have questions?</h2>
           <p className="mt-4 text-[#A0A0B8]">Our team is here to help you find the perfect plan.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">

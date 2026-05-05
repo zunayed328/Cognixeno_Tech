@@ -136,7 +136,7 @@ export default function WebDevAnimation() {
                     className="inline-block w-[1px] h-2.5 ml-[1px]"
                     style={{ background: '#025259' }}
                     animate={{ opacity: [1, 0] }}
-                    transition={{ duration: 0.5, repeat: Infinity }}
+                    transition={{ duration: 0.3, repeat: Infinity }}
                   />
                 )}
               </span>
@@ -185,7 +185,7 @@ export default function WebDevAnimation() {
                   className="flex-1 space-y-1.5 py-2"
                   initial={{ opacity: 0, x: -20 }}
                   animate={phase >= 3 ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                  transition={{ duration: 0.5, delay: 0.15 }}
+                  transition={{ duration: 0.3, delay: 0.15 }}
                 >
                   <motion.div
                     className="text-[9px] font-extrabold text-white tracking-tight"

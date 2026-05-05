@@ -106,7 +106,7 @@ export default function ResearchAgentCard() {
                 className="w-3 h-3 rounded-full border border-[#43A8A0]/50"
                 style={{ borderTopColor: '#43A8A0' }}
                 animate={{ rotate: 360 }}
-                transition={{ duration: 0.8, repeat: phase < 3 ? Infinity : 0, ease: 'linear' }}
+                transition={{ duration: 0.4, repeat: phase < 3 ? Infinity : 0, ease: 'linear' }}
               />
             )}
           </div>
@@ -184,7 +184,7 @@ export default function ResearchAgentCard() {
                         strokeLinecap="round"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: 1 }}
-                        transition={{ duration: 0.8, delay: 0.5 }}
+                        transition={{ duration: 0.4, delay: 0.5 }}
                       />
                     </svg>
                   )}
@@ -200,7 +200,7 @@ export default function ResearchAgentCard() {
                         strokeLinecap="round"
                         initial={{ strokeDashoffset: 63 }}
                         animate={{ strokeDashoffset: 0 }}
-                        transition={{ duration: 0.8, delay: 0.5 }}
+                        transition={{ duration: 0.4, delay: 0.5 }}
                         style={{ transformOrigin: '12px 12px', transform: 'rotate(-90deg)' }}
                       />
                     </svg>

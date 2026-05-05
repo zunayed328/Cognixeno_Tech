@@ -246,7 +246,7 @@ export default function MobileAppAnimation() {
                   boxShadow: '0 4px 15px rgba(255,148,122,0.3)',
                 }}
                 initial={{ scale: 0 }}
-                animate={phase >= 3 ? { scale: [0, 1.1, 1] } : { scale: 0 }}
+                animate={phase >= 3 ? { scale: 1 } : { scale: 0 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 15, delay: 0.2 }}
               >
                 <span className="text-[9px] font-bold text-[#080810] tracking-wider uppercase">Get Started</span>

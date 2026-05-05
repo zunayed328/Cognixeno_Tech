@@ -34,7 +34,7 @@ export default function Testimonials() {
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
-            transition={{ delay: index * 0.1, duration: 0.55 }}
+            transition={{ delay: index * 0.1, duration: 0.35 }}
             className="glass-panel rounded-[2rem] p-8"
           >
             <p className="text-slate-300">“{review.quote}”</p>

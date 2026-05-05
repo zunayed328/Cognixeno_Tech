@@ -74,7 +74,7 @@ export default function QualityAgentCard() {
                 className="flex items-center gap-1.5"
                 initial={{ x: -20, opacity: 0 }}
                 animate={phase >= 1 ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
-                transition={{ duration: 0.3, delay: i * 0.2 }}
+                transition={{ duration: 0.3, delay: i * 0.08 }}
               >
                 {/* Checkmark SVG animation */}
                 <svg width={12} height={12} viewBox="0 0 12 12">

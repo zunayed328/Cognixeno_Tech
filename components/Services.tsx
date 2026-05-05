@@ -1,267 +1,493 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FiSmartphone, FiGlobe, FiCpu, FiZap, FiMail, FiMessageCircle } from 'react-icons/fi'
+import { useInView } from 'react-intersection-observer'
+import Link from 'next/link'
+import {
+  FiSmartphone,
+  FiCode,
+  FiCpu,
+  FiSettings,
+  FiMail,
+  FiMessageCircle,
+  FiArrowRight
+} from 'react-icons/fi'
 
 const services = [
   {
-    id: 'mobile-app',
-    number: '01',
-    title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile applications with fluid animations, offline support, and seamless user experiences.',
-    tags: ['React Native', 'Flutter', 'iOS', 'Android'],
-    accent: '#FF947A',
+    id: '01',
     icon: FiSmartphone,
-    cta: 'Explore Service',
+    title: 'Mobile App Development',
+    subtitle: 'iOS & Android apps',
+    description:
+      'Native and cross-platform mobile apps for iOS and Android — designed, built and deployed by our AI development agents with precision and speed.',
+    tags: ['iOS', 'Android', 'Flutter', 'React Native'],
+    accentColor: '#FF947A',
+    bgTint: 'rgba(255,148,122,0.06)',
+    glowColor: 'rgba(255,148,122,0.25)',
+    borderColor: 'rgba(255,148,122,0.3)',
+    href: '/services/mobile-app',
   },
   {
-    id: 'web-dev',
-    number: '02',
+    id: '02',
+    icon: FiCode,
     title: 'Web Development',
-    description: 'High-performance web platforms built with modern frameworks, optimized for speed, SEO, and conversion.',
-    tags: ['Next.js', 'React', 'TypeScript', 'Node.js'],
-    accent: '#FF947A',
-    icon: FiGlobe,
-    cta: 'Explore Service',
+    subtitle: 'High-performance websites',
+    description:
+      'Custom websites, landing pages and full-stack web platforms built for performance, scalability and stunning modern design.',
+    tags: ['Next.js', 'React', 'Node.js', 'Tailwind'],
+    accentColor: '#025259',
+    bgTint: 'rgba(2,82,89,0.08)',
+    glowColor: 'rgba(2,82,89,0.4)',
+    borderColor: 'rgba(2,82,89,0.5)',
+    href: '/services/web-development',
   },
   {
-    id: 'ai-solutions',
-    number: '03',
-    title: 'AI-Powered Solutions',
-    description: 'GPT-integrated platforms with predictive AI, smart recommendations, and autonomous user experiences.',
-    tags: ['GPT-4', 'LangChain', 'Vector DB', 'RAG'],
-    accent: '#C8A8E9',
+    id: '03',
     icon: FiCpu,
-    cta: 'Explore Service',
+    title: 'AI-Powered Solutions',
+    subtitle: 'GPT & AI Integration',
+    description:
+      'GPT-integrated applications and platforms with predictive features, smart UI and AI-driven personalized user experiences.',
+    tags: ['GPT-4', 'LangChain', 'Smart UI', 'AI APIs'],
+    accentColor: '#C8A8E9',
+    bgTint: 'rgba(200,168,233,0.06)',
+    glowColor: 'rgba(200,168,233,0.25)',
+    borderColor: 'rgba(200,168,233,0.3)',
+    href: '/services/ai-solutions',
   },
   {
-    id: 'automation',
-    number: '04',
+    id: '04',
+    icon: FiSettings,
     title: 'AI Automation',
-    description: 'Automate repetitive workflows for businesses and institutions using intelligent AI agent pipelines.',
-    tags: ['Workflow AI', 'n8n', 'Zapier', 'Custom'],
-    accent: '#E1FF51',
-    icon: FiZap,
-    cta: 'Explore Service',
+    subtitle: 'Workflow automation',
+    description:
+      'Automate complex workflows for businesses and educational institutions using intelligent AI agent pipelines that never sleep.',
+    tags: ['Workflow AI', 'Business Ops', 'EdTech', 'n8n'],
+    accentColor: '#E1FF51',
+    bgTint: 'rgba(225,255,81,0.04)',
+    glowColor: 'rgba(225,255,81,0.2)',
+    borderColor: 'rgba(225,255,81,0.3)',
+    href: '/services/ai-automation',
   },
   {
-    id: 'email-support',
-    number: '05',
-    title: 'Professional Email Support',
-    description: 'Enterprise-grade email automation with smart routing, AI-powered responses, and analytics dashboards.',
-    tags: ['SMTP', 'Templates', 'Analytics', 'API'],
-    accent: '#F7B638',
+    id: '05',
     icon: FiMail,
-    cta: 'Explore Service',
+    title: 'Email Support',
+    subtitle: 'Enterprise email systems',
+    description:
+      'AI-managed email systems with intelligent drafting, inbox automation, smart filtering and instant professional response management.',
+    tags: ['AI Drafting', 'Smart Filter', 'Auto-Response'],
+    accentColor: '#F7B638',
+    bgTint: 'rgba(247,182,56,0.06)',
+    glowColor: 'rgba(247,182,56,0.25)',
+    borderColor: 'rgba(247,182,56,0.3)',
+    href: '/services/email-support',
   },
   {
-    id: 'chatbots',
-    number: '06',
-    title: 'AI Chatbot Solutions',
-    description: 'Custom chatbots for e-commerce and personal use — handling queries, sales, support and lead capture 24/7.',
-    tags: ['WhatsApp', 'Web Widget', 'E-Commerce'],
-    accent: '#F7B638',
+    id: '06',
     icon: FiMessageCircle,
-    cta: 'Explore Service',
+    title: 'AI Chatbots',
+    subtitle: 'Custom chatbot solutions',
+    description:
+      'Custom intelligent chatbots for personal use and e-commerce — handling queries, sales support and lead capture automatically 24/7.',
+    tags: ['E-Commerce Bot', 'Personal Bot', 'WhatsApp', 'Widget'],
+    accentColor: '#F7B638',
+    bgTint: 'rgba(120,1,21,0.1)',
+    glowColor: 'rgba(120,1,21,0.3)',
+    borderColor: 'rgba(120,1,21,0.5)',
+    href: '/services/chatbots',
   },
 ]
 
-const ServiceCard = ({ service, index }: { service: typeof services[number]; index: number }) => {
-  const a = service.accent
+interface ServiceCardProps {
+  service: typeof services[0]
+  index: number
+}
+
+function ServiceCard({ service, index }: ServiceCardProps) {
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  })
+
+  const Icon = service.icon
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.4, 0, 0.2, 1] }}
-      className="group relative flex flex-col overflow-hidden"
-      style={{
-        background: 'rgba(255,255,255,0.03)',
-        backdropFilter: 'blur(24px)',
-        WebkitBackdropFilter: 'blur(24px)',
-        border: '1px solid rgba(255,255,255,0.07)',
-        borderRadius: '20px',
-        padding: '32px',
-        boxShadow: '0 4px 6px rgba(0,0,0,0.2), 0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
-        transition: 'all 350ms cubic-bezier(0.4, 0, 0.2, 1)',
-      }}
-      whileHover={{
-        y: -8,
-        transition: { duration: 0.35 },
+      ref={ref}
+      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+      animate={inView ? { 
+        opacity: 1, 
+        y: 0, 
+        scale: 1 
+      } : {}}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.1,
+        ease: [0.4, 0, 0.2, 1],
       }}
     >
-      {/* Left border accent */}
-      <div
-        className="absolute left-0 top-[20%] bottom-[20%] w-[3px] rounded-r-sm opacity-70 group-hover:opacity-100"
-        style={{
-          background: `linear-gradient(180deg, transparent 0%, ${a} 50%, transparent 100%)`,
-          boxShadow: `2px 0 12px ${a}66`,
-          transition: 'opacity 300ms',
-        }}
-      />
-
-      {/* Corner glow decoration */}
-      <div
-        className="absolute top-0 right-0 w-[120px] h-[120px] pointer-events-none"
-        style={{
-          background: `radial-gradient(circle at top right, ${a}14 0%, transparent 70%)`,
-        }}
-      />
-
-      {/* Bottom shine line */}
-      <div
-        className="absolute bottom-0 left-0 w-full h-[1px] opacity-0 group-hover:opacity-100 pointer-events-none"
-        style={{
-          background: `linear-gradient(90deg, transparent 0%, ${a}4D 50%, transparent 100%)`,
-          transition: 'opacity 300ms',
-        }}
-      />
-
-      {/* Hover border glow */}
-      <div
-        className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 pointer-events-none"
-        style={{
-          border: `1px solid ${a}66`,
-          boxShadow: `0 8px 12px rgba(0,0,0,0.3), 0 30px 80px rgba(0,0,0,0.5), 0 0 40px ${a}26, inset 0 1px 0 rgba(255,255,255,0.08)`,
-          transition: 'opacity 350ms cubic-bezier(0.4, 0, 0.2, 1)',
-        }}
-      />
-
-      {/* Top row: Icon + Number */}
-      <div className="relative z-10 flex items-start justify-between">
-        <div
-          className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center group-hover:shadow-lg"
+      <Link href={service.href} style={{ textDecoration: 'none' }}>
+        <motion.div
+          whileHover={{ 
+            y: -8,
+            transition: { duration: 0.3, ease: 'easeOut' }
+          }}
           style={{
-            background: `${a}1F`,
-            border: `1px solid ${a}40`,
-            boxShadow: `0 0 20px ${a}33`,
-            transition: 'box-shadow 300ms',
+            position: 'relative',
+            background: service.bgTint,
+            backdropFilter: 'blur(20px)',
+            border: `1px solid ${service.borderColor}`,
+            borderLeft: `3px solid ${service.accentColor}`,
+            borderRadius: '20px',
+            padding: '32px',
+            height: '100%',
+            cursor: 'pointer',
+            overflow: 'hidden',
+            transition: 'box-shadow 300ms ease',
+          }}
+          onHoverStart={(e) => {
+            const el = e.target as HTMLElement
+            if (el) {
+              el.style.boxShadow = 
+                `0 20px 60px ${service.glowColor}, 
+                 0 0 40px ${service.glowColor}`
+            }
+          }}
+          onHoverEnd={(e) => {
+            const el = e.target as HTMLElement
+            if (el) {
+              el.style.boxShadow = 'none'
+            }
           }}
         >
-          <service.icon size={24} style={{ color: a }} />
-        </div>
-        <span
-          className="text-[11px] font-bold tracking-[2px]"
-          style={{ color: `${a}80` }}
-        >
-          {service.number}
-        </span>
-      </div>
-
-      {/* Title */}
-      <h3 className="relative z-10 mt-6 text-xl font-bold text-white tracking-[-0.3px] leading-[1.3]">
-        {service.title}
-      </h3>
-
-      {/* Accent line */}
-      <div
-        className="relative z-10 mt-3 w-8 h-[2px] rounded-[1px]"
-        style={{
-          background: a,
-          boxShadow: `0 0 8px ${a}99`,
-        }}
-      />
-
-      {/* Description */}
-      <p className="relative z-10 mt-4 text-sm text-[#A0A0B8] leading-[1.8] flex-1">
-        {service.description}
-      </p>
-
-      {/* Tags */}
-      <div className="relative z-10 mt-5 flex flex-wrap gap-2">
-        {service.tags.map(tag => (
-          <span
-            key={tag}
-            className="text-[11px] font-semibold tracking-[0.5px] px-3 py-[5px] rounded-full"
+          {/* Corner glow decoration */}
+          <div
             style={{
-              background: `${a}14`,
-              border: `1px solid ${a}33`,
-              color: a,
-              transition: 'background 200ms',
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              width: '150px',
+              height: '150px',
+              background: `radial-gradient(
+                circle at top right,
+                ${service.accentColor}15 0%,
+                transparent 70%
+              )`,
+              pointerEvents: 'none',
             }}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+          />
 
-      {/* Bottom row: CTA + Arrow */}
-      <div className="relative z-10 mt-7 flex items-center justify-between">
-        <span
-          className="flex items-center gap-1.5 text-[13px] font-semibold group-hover:gap-2.5"
-          style={{ color: a, transition: 'gap 200ms' }}
-        >
-          {service.cta}
-          <span className="text-sm">→</span>
-        </span>
-        <div
-          className="w-7 h-7 rounded-full flex items-center justify-center group-hover:bg-opacity-100"
-          style={{
-            border: `1px solid ${a}4D`,
-            color: a,
-            transition: 'all 300ms',
-          }}
-        >
-          <span className="text-xs">→</span>
-        </div>
-      </div>
+          {/* Bottom shine line */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: '1px',
+              background: `linear-gradient(
+                90deg,
+                transparent,
+                ${service.accentColor}60,
+                transparent
+              )`,
+              pointerEvents: 'none',
+            }}
+          />
+
+          {/* Top row: Icon + Number */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+          }}>
+            {/* Icon container */}
+            <motion.div
+              whileHover={{ 
+                scale: 1.1,
+                boxShadow: `0 0 30px ${service.accentColor}60`
+              }}
+              style={{
+                width: '52px',
+                height: '52px',
+                borderRadius: '14px',
+                background: `${service.accentColor}18`,
+                border: `1px solid ${service.accentColor}40`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: `0 0 20px ${service.accentColor}25`,
+                transition: 'all 300ms ease',
+              }}
+            >
+              <Icon 
+                size={24} 
+                color={service.accentColor}
+              />
+            </motion.div>
+
+            {/* Service number */}
+            <span style={{
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '2px',
+              color: `${service.accentColor}70`,
+            }}>
+              {service.id}
+            </span>
+          </div>
+
+          {/* Title */}
+          <h3 style={{
+            color: 'white',
+            fontSize: '20px',
+            fontWeight: 700,
+            marginTop: '24px',
+            marginBottom: '4px',
+            letterSpacing: '-0.3px',
+            lineHeight: 1.3,
+          }}>
+            {service.title}
+          </h3>
+
+          {/* Subtitle */}
+          <p style={{
+            color: service.accentColor,
+            fontSize: '13px',
+            fontWeight: 600,
+            marginBottom: '0',
+            letterSpacing: '0.5px',
+          }}>
+            {service.subtitle}
+          </p>
+
+          {/* Accent line */}
+          <div style={{
+            width: '32px',
+            height: '2px',
+            background: service.accentColor,
+            borderRadius: '1px',
+            boxShadow: `0 0 8px ${service.accentColor}80`,
+            margin: '14px 0',
+          }} />
+
+          {/* Description */}
+          <p style={{
+            color: '#A0A0B8',
+            fontSize: '14px',
+            lineHeight: 1.8,
+            margin: 0,
+          }}>
+            {service.description}
+          </p>
+
+          {/* Tags */}
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '8px',
+            marginTop: '20px',
+          }}>
+            {service.tags.map((tag) => (
+              <span
+                key={tag}
+                style={{
+                  background: `${service.accentColor}12`,
+                  border: `1px solid ${service.accentColor}30`,
+                  color: service.accentColor,
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  letterSpacing: '0.5px',
+                  padding: '5px 12px',
+                  borderRadius: '50px',
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Bottom row */}
+          <motion.div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              marginTop: '28px',
+              color: service.accentColor,
+              fontSize: '13px',
+              fontWeight: 600,
+            }}
+            whileHover={{ gap: '12px' }}
+            transition={{ duration: 0.2 }}
+          >
+            <span>Explore Service</span>
+            <FiArrowRight size={14} />
+          </motion.div>
+        </motion.div>
+      </Link>
     </motion.div>
   )
 }
 
 export default function Services() {
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  })
+
   return (
-    <section id="solutions" className="section section--salmon px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl">
-        {/* Section header with badge */}
-        <div className="mb-16 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6"
-            style={{
-              background: 'rgba(200,168,233,0.08)',
-              border: '1px solid rgba(200,168,233,0.2)',
-              boxShadow: '0 0 20px rgba(200,168,233,0.1)',
-            }}
-          >
-            <div className="w-1.5 h-1.5 rounded-full bg-[#C8A8E9]" />
-            <span className="text-[11px] font-bold tracking-[2px] text-[#C8A8E9] uppercase">
+    <section
+      id="services"
+      style={{
+        background: '#080810',
+        padding: '100px 40px',
+      }}
+    >
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+        }}
+      >
+        {/* Section Header */}
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          style={{
+            textAlign: 'center',
+            marginBottom: '60px',
+          }}
+        >
+          {/* Badge */}
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'rgba(225,255,81,0.08)',
+            border: '1px solid rgba(225,255,81,0.2)',
+            borderRadius: '50px',
+            padding: '6px 16px',
+            marginBottom: '20px',
+          }}>
+            <div style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              background: '#E1FF51',
+              boxShadow: '0 0 8px #E1FF51',
+            }} />
+            <span style={{
+              color: '#E1FF51',
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+            }}>
               What We Build
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl font-extrabold text-white sm:text-5xl tracking-[-1px] leading-[1.15]"
-          >
+          {/* Title */}
+          <h2 style={{
+            color: 'white',
+            fontSize: 'clamp(36px, 5vw, 52px)',
+            fontWeight: 800,
+            margin: '0 0 16px',
+            letterSpacing: '-1px',
+            lineHeight: 1.15,
+          }}>
             Our Core Services
-          </motion.h2>
+          </h2>
 
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-5 mx-auto w-[60px] h-[3px] rounded-[2px] origin-center"
-            style={{
-              background: 'linear-gradient(90deg, #C8A8E9, #F7B638)',
-              boxShadow: '0 0 12px rgba(200,168,233,0.5)',
-            }}
-          />
-        </div>
+          {/* Subtitle */}
+          <p style={{
+            color: '#A0A0B8',
+            fontSize: '18px',
+            maxWidth: '500px',
+            margin: '0 auto 28px',
+            lineHeight: 1.7,
+          }}>
+            Every service planned, executed and delivered 
+            by our intelligent AI agents.
+          </p>
 
-        {/* 3-column grid */}
-        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Gradient divider */}
+          <div style={{
+            width: '60px',
+            height: '3px',
+            background: 'linear-gradient(90deg, #C8A8E9, #FF947A)',
+            borderRadius: '2px',
+            margin: '0 auto',
+            boxShadow: '0 0 12px rgba(200,168,233,0.5)',
+          }} />
+        </motion.div>
+
+        {/* Services Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 
+            'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '24px',
+        }}>
           {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
+            <ServiceCard
+              key={service.id}
+              service={service}
+              index={index}
+            />
           ))}
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          style={{
+            textAlign: 'center',
+            marginTop: '60px',
+          }}
+        >
+          <p style={{
+            color: '#6B6B8A',
+            fontSize: '15px',
+            marginBottom: '20px',
+          }}>
+            Not sure which service you need?
+          </p>
+          <Link href="/contact">
+            <motion.button
+              whileHover={{ 
+                scale: 1.03,
+                boxShadow: '0 0 30px rgba(200,168,233,0.3)'
+              }}
+              whileTap={{ scale: 0.97 }}
+              style={{
+                background: 
+                  'linear-gradient(135deg, #C8A8E9, #8B4FBF)',
+                color: 'white',
+                border: 'none',
+                padding: '14px 32px',
+                borderRadius: '10px',
+                fontSize: '15px',
+                fontWeight: 700,
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+            >
+              Talk to Our AI Agent
+              <FiArrowRight size={16} />
+            </motion.button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   )

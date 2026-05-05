@@ -211,7 +211,7 @@ export default function AnimatedCompanyName({
               className="inline-block relative"
               initial={
                 animate
-                  ? { opacity: 0, y: 60, rotateX: -90, filter: 'blur(8px)' }
+                  ? { opacity: 0, y: 20, rotateX: -90, filter: 'blur(8px)' }
                   : false
               }
               animate={
@@ -299,7 +299,7 @@ export default function AnimatedCompanyName({
               className="inline-block"
               initial={
                 animate
-                  ? { opacity: 0, y: 60, rotateX: -90, filter: 'blur(8px)' }
+                  ? { opacity: 0, y: 20, rotateX: -90, filter: 'blur(8px)' }
                   : false
               }
               animate={

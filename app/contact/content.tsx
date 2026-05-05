@@ -67,7 +67,7 @@ export default function ContactContent() {
           <div className="grid gap-12 lg:grid-cols-5">
             {/* Left — Info */}
             <div className="lg:col-span-2 space-y-8">
-              <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }}>
                 <GlassCard accentColor="#C8A8E9" className="space-y-6">
                   <h3 className="text-xl font-bold text-white">Get in Touch</h3>
 
@@ -108,7 +108,7 @@ export default function ContactContent() {
 
             {/* Right — Form */}
             <div className="lg:col-span-3">
-              <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }}>
                 <AnimatePresence mode="wait">
                   {!submitted ? (
                     <motion.div key="form" exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.3 }}>
@@ -194,7 +194,7 @@ export default function ContactContent() {
                       </GlassCard>
                     </motion.div>
                   ) : (
-                    <motion.div key="success" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, type: 'spring' }}>
+                    <motion.div key="success" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3, type: 'spring' }}>
                       <GlassCard accentColor="#22c55e" hover={false}>
                         <div className="text-center py-10 space-y-5">
                           {/* Animated check */}
@@ -235,7 +235,7 @@ export default function ContactContent() {
               { q: 'What if I need multiple services?', a: 'No problem! Select your primary need and describe all requirements in the description. We\'ll plan everything.', accent: '#E1FF51' },
               { q: 'Is there a free consultation?', a: 'Yes! Every initial consultation is free. We\'ll analyze your needs and provide a detailed quote with no obligation.', accent: '#F7B638' },
             ].map((faq, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: i * 0.1 }}>
                 <GlassCard accentColor={faq.accent}>
                   <h4 className="text-sm font-bold text-white">{faq.q}</h4>
                   <p className="mt-3 text-xs text-[#A0A0B8] leading-[1.8]">{faq.a}</p>

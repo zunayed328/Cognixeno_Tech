@@ -2,17 +2,19 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { FiSmartphone, FiGlobe, FiCpu, FiZap, FiMail, FiMessageCircle, FiArrowRight } from 'react-icons/fi'
 import PageHero from '../../components/ui/PageHero'
 import GlassCard from '../../components/ui/GlassCard'
 import SectionBadge from '../../components/ui/SectionBadge'
 import AnimatedButton from '../../components/ui/AnimatedButton'
-import MobileAppAnimation from '../../components/animations/MobileAppAnimation'
-import WebDevAnimation from '../../components/animations/WebDevAnimation'
-import AISolutionsAnimation from '../../components/animations/AISolutionsAnimation'
-import AIAutomationAnimation from '../../components/animations/AIAutomationAnimation'
-import EmailSupportAnimation from '../../components/animations/EmailSupportAnimation'
-import ChatbotsAnimation from '../../components/animations/ChatbotsAnimation'
+
+const MobileAppAnimation = dynamic(() => import('../../components/animations/MobileAppAnimation'), { ssr: false })
+const WebDevAnimation = dynamic(() => import('../../components/animations/WebDevAnimation'), { ssr: false })
+const AISolutionsAnimation = dynamic(() => import('../../components/animations/AISolutionsAnimation'), { ssr: false })
+const AIAutomationAnimation = dynamic(() => import('../../components/animations/AIAutomationAnimation'), { ssr: false })
+const EmailSupportAnimation = dynamic(() => import('../../components/animations/EmailSupportAnimation'), { ssr: false })
+const ChatbotsAnimation = dynamic(() => import('../../components/animations/ChatbotsAnimation'), { ssr: false })
 
 const services = [
   { id: 'mobile-app', title: 'Mobile App Development', desc: 'Native and cross-platform mobile applications with fluid animations, offline support, and seamless UX.', tags: ['React Native', 'Flutter', 'iOS', 'Android'], icon: FiSmartphone, accent: '#FF947A' },
@@ -59,7 +61,7 @@ export default function ServicesContent() {
             return (
               <motion.div
                 key={s.id}
-                initial={{ opacity: 0, y: 60 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: 0.1 }}
@@ -105,7 +107,7 @@ export default function ServicesContent() {
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-16">
             <SectionBadge text="How It Works" color="#E1FF51" />
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="mt-6 text-3xl sm:text-5xl font-extrabold text-white tracking-[-1px]">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6, delay: 0.1 }} className="mt-6 text-3xl sm:text-5xl font-extrabold text-white tracking-[-1px]">
               Three Simple Steps
             </motion.h2>
           </div>
@@ -119,8 +121,8 @@ export default function ServicesContent() {
                 key={step.num}
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.3, delay: i * 0.15 }}
                 className="flex gap-6 py-8"
               >
                 <div className="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center text-lg font-extrabold relative z-10" style={{ background: `${step.accent}1A`, border: `2px solid ${step.accent}40`, color: step.accent, boxShadow: `0 0 20px ${step.accent}33` }}>
@@ -138,7 +140,7 @@ export default function ServicesContent() {
 
       {/* CTA */}
       <section className="relative py-24 px-6 text-center" style={{ background: 'linear-gradient(180deg, #080810, #0a0a14)' }}>
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} className="max-w-xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-[-1px]">Not sure which service you need?</h2>
           <p className="mt-4 text-[#A0A0B8]">Talk to our AI agent — it will recommend the perfect solution for your project.</p>
           <div className="mt-8">

@@ -106,7 +106,7 @@ export default function PortfolioContent() {
             <SectionBadge text="Featured Project" color="#F7B638" />
           </div>
           <div className="grid gap-12 lg:grid-cols-2 items-center">
-            <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }}>
               <span className="text-[10px] font-bold px-3 py-1 rounded-full" style={{ background: 'rgba(247,182,56,0.15)', border: '1px solid rgba(247,182,56,0.3)', color: '#F7B638' }}>BEST PROJECT</span>
               <h3 className="mt-4 text-3xl font-extrabold text-white">ShopFlow AI</h3>
               <p className="mt-3 text-[#A0A0B8] leading-relaxed">A full-featured e-commerce chatbot that processes over 10,000 customer queries daily. Includes product recommendations, cart management, payment processing, and order tracking — all through WhatsApp.</p>
@@ -119,14 +119,14 @@ export default function PortfolioContent() {
                 ))}
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="h-[300px] rounded-2xl" style={{ background: 'linear-gradient(135deg, #F7B638, #780115)', boxShadow: '0 20px 60px rgba(247,182,56,0.2)' }} />
+            <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} className="h-[300px] rounded-2xl" style={{ background: 'linear-gradient(135deg, #F7B638, #780115)', boxShadow: '0 20px 60px rgba(247,182,56,0.2)' }} />
           </div>
         </div>
       </section>
 
       {/* CTA */}
       <section className="relative py-24 px-6 text-center" style={{ background: 'linear-gradient(180deg, #080810, #0a0a14)' }}>
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} className="max-w-xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-[-1px]">Want to be our next success story?</h2>
           <p className="mt-4 text-[#A0A0B8]">Let&apos;s build something amazing together.</p>
           <div className="mt-8"><AnimatedButton href="/contact" color="#F7B638" gradientTo="#D4941F">Start Your Project</AnimatedButton></div>

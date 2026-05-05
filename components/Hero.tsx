@@ -147,7 +147,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: -18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5, ease: 'easeOut' }}
+          transition={{ duration: 0.4, delay: 1.5, ease: 'easeOut' }}
           className="mb-8 inline-flex items-center rounded-full border border-[rgba(200,168,233,0.3)] bg-[rgba(200,168,233,0.1)] px-4 py-2 text-[13px] tracking-[2px] text-[#C8A8E9]"
         >
           ⚡ ALL TASKS MANAGED BY AI AGENTS
@@ -231,7 +231,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          transition={{ duration: 0.3, delay: 0.8 }}
           className="relative mb-10"
         >
           <AnimatedCompanyName size="hero" animate={true} />

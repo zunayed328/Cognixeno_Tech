@@ -28,7 +28,7 @@ export default function Footer() {
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.4 }}
       className="pt-20 pb-10"
       style={{ background: '#0A0A14', borderTop: '1px solid rgba(200,168,233,0.1)' }}
     >

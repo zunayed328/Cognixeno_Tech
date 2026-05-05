@@ -62,8 +62,8 @@ export default function AIAgents() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.3 }}
             className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6"
             style={{
               background: 'rgba(225,255,81,0.08)',
@@ -78,7 +78,7 @@ export default function AIAgents() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl font-extrabold text-white sm:text-5xl tracking-[-1px] leading-[1.15]"
           >
@@ -88,7 +88,7 @@ export default function AIAgents() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-5 max-w-2xl mx-auto text-base text-[#A0A0B8]"
           >
@@ -98,8 +98,8 @@ export default function AIAgents() {
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
             className="mt-5 mx-auto w-[60px] h-[3px] rounded-[2px] origin-center"
             style={{ background: 'linear-gradient(90deg, #E1FF51, #25D366)', boxShadow: '0 0 12px rgba(225,255,81,0.5)' }}
           />
@@ -113,7 +113,7 @@ export default function AIAgents() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.5 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.4, delay: i * 0.15, type: 'spring', stiffness: 200 }}
                   className="group flex flex-col items-center gap-4 relative"
                 >
@@ -162,10 +162,10 @@ export default function AIAgents() {
             return (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 60, scale: 0.95 }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: index * 0.1, ease: [0.4, 0, 0.2, 1] }}
+                transition={{ duration: 0.3, delay: index * 0.1, ease: [0.4, 0, 0.2, 1] }}
                 className="group relative overflow-hidden"
                 style={{
                   background: 'rgba(255,255,255,0.03)',

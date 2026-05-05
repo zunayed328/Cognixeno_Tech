@@ -12,8 +12,8 @@ export default function SectionBadge({ text, color = '#C8A8E9' }: SectionBadgePr
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.3 }}
       className="inline-flex items-center gap-2 rounded-full px-4 py-1.5"
       style={{
         background: `${color}14`,

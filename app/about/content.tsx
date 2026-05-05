@@ -46,7 +46,7 @@ export default function AboutContent() {
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.7 }}
             >
               <SectionBadge text="Our Mission" color="#C8A8E9" />
@@ -66,8 +66,8 @@ export default function AboutContent() {
                     key={m.title}
                     initial={{ opacity: 0, x: 40 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    viewport={{ once: true, amount: 0.1 }}
+                    transition={{ duration: 0.3, delay: i * 0.1 }}
                   >
                     <GlassCard accentColor={m.accent}>
                       <div className="flex items-start gap-4">
@@ -99,7 +99,7 @@ export default function AboutContent() {
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="mt-6 text-3xl sm:text-5xl font-extrabold text-white tracking-[-1px]"
             >
@@ -113,10 +113,10 @@ export default function AboutContent() {
               return (
                 <motion.div
                   key={v.title}
-                  initial={{ opacity: 0, y: 60, scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, margin: '-50px' }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  transition={{ duration: 0.3, delay: i * 0.1 }}
                 >
                   <GlassCard accentColor={v.accent} className="relative min-h-[200px]">
                     {/* Watermark number */}
@@ -149,7 +149,7 @@ export default function AboutContent() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             className="mt-8"
           >
             <div className="w-20 h-20 mx-auto rounded-2xl flex items-center justify-center mb-6" style={{ background: 'rgba(225,255,81,0.1)', border: '1px solid rgba(225,255,81,0.25)' }}>
@@ -171,8 +171,8 @@ export default function AboutContent() {
                   key={r.title}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.3, delay: i * 0.15 }}
                 >
                   <GlassCard accentColor={r.accent}>
                     <div className="w-12 h-12 rounded-[14px] flex items-center justify-center mx-auto" style={{ background: `${r.accent}1A`, border: `1px solid ${r.accent}33` }}>
@@ -193,7 +193,7 @@ export default function AboutContent() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="max-w-xl mx-auto"
         >
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-[-1px]">Ready to work with us?</h2>

@@ -140,7 +140,7 @@ export default function DevAgentCard() {
                       className="inline-block w-[1px] h-[10px] ml-[1px]"
                       style={{ background: '#FF947A' }}
                       animate={{ opacity: [1, 0] }}
-                      transition={{ duration: 0.5, repeat: Infinity }}
+                      transition={{ duration: 0.3, repeat: Infinity }}
                     />
                   )}
                 </span>

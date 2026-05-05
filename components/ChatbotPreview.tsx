@@ -174,8 +174,8 @@ export default function ChatbotPreview() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.3 }}
             className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6"
             style={{ background: 'rgba(247,182,56,0.08)', border: '1px solid rgba(247,182,56,0.2)', boxShadow: '0 0 20px rgba(247,182,56,0.1)' }}
           >
@@ -186,7 +186,7 @@ export default function ChatbotPreview() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl font-extrabold text-white sm:text-5xl tracking-[-1px]"
           >
@@ -196,8 +196,8 @@ export default function ChatbotPreview() {
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             className="mt-5 mx-auto w-[60px] h-[3px] rounded-[2px] origin-center"
             style={{ background: 'linear-gradient(90deg, #F7B638, #780115)', boxShadow: '0 0 12px rgba(247,182,56,0.5)' }}
           />
@@ -216,7 +216,7 @@ export default function ChatbotPreview() {
               key={featureGroup.category}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               className="space-y-4"
             >
@@ -227,7 +227,7 @@ export default function ChatbotPreview() {
                     key={item}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ duration: 0.4, delay: idx * 0.1 + itemIdx * 0.08 }}
                     className="flex items-center gap-3 p-3 rounded-xl"
                     style={{ transition: 'background 200ms' }}

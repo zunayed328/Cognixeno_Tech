@@ -135,7 +135,7 @@ export default function EmailSupportAnimation() {
                   }}
                   initial={{ x: 60, opacity: 0 }}
                   animate={phase >= 1 ? { x: 0, opacity: 1 } : { x: 60, opacity: 0 }}
-                  transition={{ duration: 0.35, delay: i * 0.25 }}
+                  transition={{ duration: 0.35, delay: i * 0.085 }}
                 >
                   {/* Unread dot */}
                   {email.unread && (
@@ -187,7 +187,7 @@ export default function EmailSupportAnimation() {
                           className="w-1 h-1 rounded-full"
                           style={{ background: '#F7B638' }}
                           animate={{ y: [0, -3, 0] }}
-                          transition={{ duration: 0.5, delay: d * 0.15, repeat: Infinity, repeatDelay: 0.2 }}
+                          transition={{ duration: 0.3, delay: d * 0.15, repeat: Infinity, repeatDelay: 0.2 }}
                         />
                       ))}
                     </motion.span>
@@ -255,7 +255,7 @@ export default function EmailSupportAnimation() {
                       rotate: [-20, 15],
                       scale: [1, 0.6],
                     }}
-                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
                   >
                     ✉️
                   </motion.div>

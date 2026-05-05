@@ -101,7 +101,7 @@ export default function CommunicationAgentCard() {
                   strokeDasharray="3 5"
                   initial={{ pathLength: 0 }}
                   animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
+                  transition={{ duration: 0.3, delay: i * 0.15 }}
                 />
 
                 {/* Message traveling to hub */}

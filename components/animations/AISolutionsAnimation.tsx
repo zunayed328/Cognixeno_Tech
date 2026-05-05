@@ -96,7 +96,7 @@ export default function AISolutionsAnimation() {
             strokeWidth={0.7}
             initial={{ pathLength: 0, opacity: 0 }}
             animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 + i * 0.008 }}
+            transition={{ duration: 0.3, delay: 0.3 + i * 0.008 }}
           />
         ))}
 
