@@ -6,6 +6,15 @@ import PageHero from '../../components/ui/PageHero'
 import GlassCard from '../../components/ui/GlassCard'
 import AnimatedButton from '../../components/ui/AnimatedButton'
 import SectionBadge from '../../components/ui/SectionBadge'
+import LexiCodeMockup from '../../components/mockups/LexiCodeMockup'
+import ShopFlowMockup from '../../components/mockups/ShopFlowMockup'
+import NexaBoardMockup from '../../components/mockups/NexaBoardMockup'
+import AutoPilotMockup from '../../components/mockups/AutoPilotMockup'
+import MediScanMockup from '../../components/mockups/MediScanMockup'
+import EduFlowMockup from '../../components/mockups/EduFlowMockup'
+import VoiceDeskMockup from '../../components/mockups/VoiceDeskMockup'
+import InsightEngineMockup from '../../components/mockups/InsightEngineMockup'
+import MailForgeMockup from '../../components/mockups/MailForgeMockup'
 
 const categories = ['All', 'Mobile Apps', 'Web Dev', 'AI Solutions', 'Automation', 'Chatbots']
 
@@ -68,9 +77,25 @@ export default function PortfolioContent() {
                   transition={{ duration: 0.3 }}
                 >
                   <GlassCard accentColor={project.accent} className="h-full">
-                    {/* Gradient image placeholder */}
-                    <div className="h-[180px] rounded-xl overflow-hidden mb-5 group relative" style={{ background: project.gradient }}>
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'rgba(8,8,16,0.7)' }}>
+                    {/* Gradient + UI Mockup */}
+                    <div className="h-[220px] rounded-xl overflow-hidden mb-5 group relative" style={{ background: project.gradient }}>
+                      {/* Dark overlay */}
+                      <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'rgba(8,8,16,0.4)' }} />
+                      
+                      {/* Mockup Container */}
+                      <div className="absolute inset-0 z-10 pointer-events-none">
+                        {project.name === 'LexiCode' && <LexiCodeMockup />}
+                        {project.name === 'ShopFlow AI' && <ShopFlowMockup />}
+                        {project.name === 'NexaBoard' && <NexaBoardMockup />}
+                        {project.name === 'AutoPilot CRM' && <AutoPilotMockup />}
+                        {project.name === 'MediScan' && <MediScanMockup />}
+                        {project.name === 'EduFlow' && <EduFlowMockup />}
+                        {project.name === 'VoiceDesk' && <VoiceDeskMockup />}
+                        {project.name === 'InsightEngine' && <InsightEngineMockup />}
+                        {project.name === 'MailForge' && <MailForgeMockup />}
+                      </div>
+
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" style={{ background: 'rgba(8,8,16,0.7)' }}>
                         <span className="text-sm font-bold text-white">View Project</span>
                       </div>
                     </div>
