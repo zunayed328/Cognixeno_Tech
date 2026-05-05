@@ -145,7 +145,7 @@ export default function Navbar() {
     }}>
 
       {/* Left section: Logo + Company Name */}
-      <Link href="/" className="flex items-center gap-3" style={{ textDecoration: 'none' }}>
+      <Link href="/" prefetch={true} className="flex items-center gap-3" style={{ textDecoration: 'none' }}>
         <AnimatedLogo size={36} showGlow={true} animate={true} />
         <AnimatedCompanyName size="navbar" animate={true} />
       </Link>
@@ -271,6 +271,7 @@ export default function Navbar() {
                         </div>
                         <Link
                           href="/services"
+                          prefetch={true}
                           onClick={() => setServicesOpen(false)}
                           style={{
                             display: 'flex',
@@ -307,6 +308,7 @@ export default function Navbar() {
                             >
                               <Link
                                 href={service.href}
+                                prefetch={true}
                                 onClick={() => setServicesOpen(false)}
                                 style={{ textDecoration: 'none' }}
                               >
@@ -388,6 +390,7 @@ export default function Navbar() {
                       }}>
                         <Link
                           href="/contact"
+                          prefetch={true}
                           onClick={() => setServicesOpen(false)}
                           style={{ textDecoration: 'none' }}
                         >
@@ -465,6 +468,7 @@ export default function Navbar() {
             <Link 
               key={link.href}
               href={link.href}
+              prefetch={true}
               style={{
                 color: pathname === link.href 
                   ? 'white' 
@@ -489,7 +493,7 @@ export default function Navbar() {
 
       {/* Right: Get Started button */}
       <div className="hidden lg:flex">
-        <Link href="/contact" style={{ textDecoration: 'none' }}>
+        <Link href="/contact" prefetch={true} style={{ textDecoration: 'none' }}>
           <button style={{
             background: 'linear-gradient(135deg, #F7B638, #D4941F)',
             color: '#080810',

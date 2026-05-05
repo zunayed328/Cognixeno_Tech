@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Suspense } from 'react'
 import './globals.css'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import NavigationProgress from '../components/ui/NavigationProgress'
-import PageLoader from '../components/ui/PageLoader'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import NavigationProgress from '@/components/ui/NavigationProgress'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
-  display: 'swap'
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
   title: 'Cognixeno Tech — AI-Powered Digital Solutions',
-  description: 'Mobile apps, web development, AI automation and intelligent chatbots managed by AI agents.',
+  description:
+    'Mobile apps, web development, AI automation and intelligent chatbots managed by AI agents.',
 }
 
 export default function RootLayout({
@@ -24,12 +25,25 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-[#080810] text-white antialiased overflow-x-hidden`}>
-        <PageLoader />
+      <body
+        className={`${inter.className} antialiased`}
+        style={{
+          background: '#080810',
+          color: 'white',
+          overflowX: 'hidden',
+        }}
+      >
         <NavigationProgress />
         <Navbar />
         <main>
-          {children}
+          <Suspense fallback={
+            <div style={{
+              minHeight: '100vh',
+              background: '#080810'
+            }} />
+          }>
+            {children}
+          </Suspense>
         </main>
         <Footer />
       </body>

@@ -6,49 +6,51 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export default function NavigationProgress() {
   const pathname = usePathname()
-  const [loading, setLoading] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    setLoading(true)
+    setVisible(true)
     setProgress(0)
 
-    const timer1 = setTimeout(() => setProgress(30), 50)
-    const timer2 = setTimeout(() => setProgress(60), 150)
-    const timer3 = setTimeout(() => setProgress(85), 300)
-    const timer4 = setTimeout(() => {
-      setProgress(100)
-      setTimeout(() => setLoading(false), 300)
-    }, 500)
+    const t1 = setTimeout(() => setProgress(40), 0)
+    const t2 = setTimeout(() => setProgress(70), 200)
+    const t3 = setTimeout(() => setProgress(90), 400)
+    const t4 = setTimeout(() => setProgress(100), 700)
+    const t5 = setTimeout(() => setVisible(false), 1000)
 
     return () => {
-      clearTimeout(timer1)
-      clearTimeout(timer2)
-      clearTimeout(timer3)
-      clearTimeout(timer4)
+      clearTimeout(t1)
+      clearTimeout(t2)
+      clearTimeout(t3)
+      clearTimeout(t4)
+      clearTimeout(t5)
     }
   }, [pathname])
 
   return (
     <AnimatePresence>
-      {loading && (
+      {visible && (
         <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
           style={{
             position: 'fixed',
             top: 0,
             left: 0,
-            zIndex: 9999,
+            zIndex: 999999,
             height: '3px',
-            background: 'linear-gradient(90deg, #C8A8E9, #FF947A, #E1FF51)',
             width: `${progress}%`,
-            transition: 'width 300ms ease',
-            boxShadow: '0 0 10px rgba(200,168,233,0.8), 0 0 20px rgba(200,168,233,0.4)',
-            borderRadius: '0 2px 2px 0'
+            background:
+              'linear-gradient(90deg, #C8A8E9, #FF947A, #E1FF51)',
+            boxShadow:
+              '0 0 12px rgba(200,168,233,0.9), 0 0 24px rgba(200,168,233,0.4)',
+            borderRadius: '0 2px 2px 0',
+            transition: 'width 200ms ease',
+            pointerEvents: 'none',
           }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
         />
       )}
     </AnimatePresence>
