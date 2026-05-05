@@ -1,6 +1,5 @@
-import type { NextConfig } from 'next'
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   experimental: {
     optimizePackageImports: [
       'framer-motion',
@@ -9,10 +8,13 @@ const nextConfig: NextConfig = {
       'react-icons/fa',
     ],
   },
+
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole:
+      process.env.NODE_ENV === 'production',
   },
+
   poweredByHeader: false,
 }
 
-export default nextConfig
+module.exports = nextConfig
